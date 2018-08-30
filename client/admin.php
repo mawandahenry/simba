@@ -231,11 +231,10 @@
 <div class="div_2">
    <h3 style="text-align:center;">Edit Security Guard</h3></br>
        <section>
-	   <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id ="form2">
-	   <div class="form-group">
-    <div class="col-sm-11">
-   <input type="text" class="form-control"  name ="search" placeholder="search......">
-  </div></br>
+	   <div class="search-box">
+        <input type="text" autocomplete="off" class="form-control col-md-11" placeholder="Search country..." />
+        <div class="result"></div>
+    </div>
   
 </div>
 		</form>
@@ -399,7 +398,7 @@
 </td></tr></table>
 <div class="form-group">
 <div class="col-sm-offset-2 col-sm-10">
-<button type="submit" class="btn btn-info btn-block" id ="editor">Add Guard</button>
+<button type="submit" class="btn btn-info btn-block" id ="editor">Edit Guard</button>
 </div>
 </div>
 
@@ -422,6 +421,7 @@
 
 		<!-- Scripts -->
 			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/searchjs"></script>
 			<script src="../assets/js/queries.js"></script>
 			<script src="../assets/js/browser.min.js"></script>
 			<script src="../assets/js/breakpoints.min.js"></script>
