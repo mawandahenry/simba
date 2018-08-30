@@ -1,12 +1,25 @@
 <html>
 	<head>
-		<title>Generic Page - Industrious by TEMPLATED</title>
+		<title>SIMBA SHIELD</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+
+		<script>
+			$(function(){
+				$(document).ajaxStart(function(){
+					$("#loader").fadeIn("slow");
+					alert("am started");
+				});
+
+				$(document).ajaxStop(function(){
+					$("#loader").fadeOut("slow");
+				});
+			});
+			</script>
 	</head>
 	<body class="is-preload">
 
@@ -22,12 +35,12 @@
 			<nav id="menu">
 			<h2>Admin</h2>
 				<ul class="links">
-					<li><a href="index.html">Add Guard</a></li>
-					<li><a href="elements.html">Delete Guard</a></li>
-					<li><a href="generic.html">Edit</a></li>
-					<li><a href="index.html">Add supervisor</a></li>
-					<li><a href="elements.html">Delete Sup</a></li>
-					<li><a href="generic.html">Edit Sup</a></li>
+					<li><a href="#" id = "add_gad">Add Guard</a></li>
+					<li><a href="#" id = "delete_gad">Delete Guard</a></li>
+					<li><a href="#" id = "edit_gad">Edit Guard</a></li>
+					<li><a href="#">Add supervisor</a></li>
+					<li><a href="#">Delete Sup</a></li>
+					<li><a href="#">Edit Sup</a></li>
 				</ul>
 			</nav>
 
@@ -37,159 +50,364 @@
 <h1>SIMBA SHIELED</h1>
 <img src = "../assets/images/samban.png" width="220" height = "200" style="float:right;">
 </div></br>
-
-
-		<!-- Main -->
-<div class="add">
+<div class="div_1">
    <h3 style="text-align:center;">Add Security Guard</h3></br>
        <section>
-	   <form class="form-horizontal" role="form">
+<h4 class="special">Personal Info</h4>
+	<table class="table">
+        <tr>
+	      <td>
+		   <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id ="form1">
+	   <div class="form-group">
+    <div class="col-sm-10">
+   <input type="text" class="form-control" placeholder="Enter Employee number" name ="number">
+  </div>
+</div>
+    <div class="form-group">
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="lastname" placeholder="Enter First Name" name="first">
+       </div>
+    </div>
 <div class="form-group">
-<div class="col-sm-10">
-<input type="text" class="form-control" 
-placeholder="Enter Employee number">
-</div>
-</div>
-<div class="form-group">
-<div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Enter First Name">
-</div>
-</div>
-
-<div class="form-group">
-<div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Enter Last Name">
-</div>
-</div>
-<div class="form-group col-md-5">
-<label for="name">Gender</label>
-<select class="form-control">
-<option>Male</option>
+    <div class="col-sm-10">
+       <input type="text" class="form-control" id="lastname" placeholder="Enter Last Name" name="last">
+          </div>
+       </div>
+     <div class="form-group col-md-5">
+  <label for="name">Gender</label>
+<select class="form-control" name = "gender">
+     <option>Male</option>
 <option>Female</option>
-
 </select>
 </div>
+</td><td>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Age">
-</div>
-</div>
-<div class="form-group">
-<div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="date of birth">
+<input type="text" class="form-control" id="lastname" placeholder="Age" name = "age">
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="NIN">
+<input type="text" class="form-control" id="lastname" placeholder="date of birth" name="dob">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="NIN" name= "NIN">
 </div>
 </div>
 <div class="form-group col-md-5">
 <label for="name">Status</label>
-<select class="form-control">
+<select class="form-control" name = "status">
 <option>Single</option>
 <option>Married</option>
 
 </select>
 </div>
+
+</td></tr></table>
+<h4 class="special"><u>Bank details</u> </h4>
+<table class="table"><tr><td>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Email">
-</div>
-</div>
-<div class="form-group">
-<div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Contact">
+<input type="text" class="form-control" id="lastname" placeholder="Email" name="email">
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Emergency contact">
-</div>
-</div>
-<h4><u>Bank details</u> </h4>
-<div class="form-group">
-<div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Bank name">
+<input type="text" class="form-control" id="lastname" placeholder="Contact" name="contact">
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Branch">
+<input type="text" class="form-control" id="lastname" placeholder="Emergency contact" name ="emergency">
+</div>
+</div>
+</td><td>
+
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Bank name" name="bank">
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Account number">
-</div>
-</div>
-<h4><u>location</u></h4>
-<div class="form-group">
-<div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Home address">
+<input type="text" class="form-control" id="lastname" placeholder="Branch" name="branch">
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="county">
+<input type="text" class="form-control" id="lastname" placeholder="Account number" name="account">
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Sub-county">
+<input type="text" class="form-control" id="lastname" placeholder="NSSF number" name="nssf">
+</div>
+</div>
+</td></tr></table>
+<h4 class="special"><u>location</u></h4>
+<table class="table"><tr><td>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Home address" name="home">
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="village">
+<input type="text" class="form-control" id="lastname" placeholder="county" name="county">
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="District">
+<input type="text" class="form-control" id="lastname" placeholder="Sub-county" name="sub">
 </div>
 </div>
-<h4><u>INFO</u></h4>
+</td><td>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Next of kin">
-</div>
-</div>
-<div class="form-group">
-<div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Contact">
+<input type="text" class="form-control" id="lastname" placeholder="village" name = "village">
 </div>
 </div>
 <div class="form-group">
 <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname"
-placeholder="Residence">
+<input type="text" class="form-control" id="lastname" placeholder="District" name="district">
 </div>
 </div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="number of kids" name="kids">
+</div>
+</div>
+</td></tr></table>
+<h4 class="special"><u>INFO</u></h4>
+<table class="table"><tr><td>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Next of kin" name="kin">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Contact" name="hiscontact">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Residence" name = "res">
+</div>
+</div>
+</td><td>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Hire date" name="hire">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="start date" name="start">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Monthly pay" name = "month">
+</div>
+</div>
+</td></tr></table>
 <div class="form-group">
 <div class="col-sm-offset-2 col-sm-10">
-<button type="submit" class="btn btn-success">Add Guard</button>
+<button type="submit" class="btn btn-success btn-block" id ="sender">Add Guard</button>
 </div>
 </div>
+
 </form>
+<div id="err"></div>
+<div id="loader">
+<img src="../assets/images/loader.gif">
+</div>
+</section>
+</div>
+<!-- edit div -->
+<div class="div_2">
+   <h3 style="text-align:center;">Edit Security Guard</h3></br>
+       <section>
+	   <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id ="form2">
+	   <div class="form-group">
+    <div class="col-sm-11">
+   <input type="text" class="form-control"  name ="search" placeholder="search......">
+  </div></br>
+  
+</div>
+		</form>
+		<div id = "results"></div>
+		   	   
+<h4 class="special">Personal Info</h4>
+	<table class="table">
+        <tr>
+	      <td>
+		   <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id ="form2">
+	   <div class="form-group">
+    <div class="col-sm-10">
+   <input type="text" class="form-control"  name ="number">
+  </div>
+</div>
+    <div class="form-group">
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="lastname"  name="first">
+       </div>
+    </div>
+<div class="form-group">
+    <div class="col-sm-10">
+       <input type="text" class="form-control" id="lastname"  name="last">
+          </div>
+       </div>
+	   <div class="form-group">
+    <div class="col-sm-10">
+       <input type="text" class="form-control" id="lastname"  name="Gender">
+          </div>
+       </div>
+</td><td>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname"  name = "age">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname"  name="dob">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname"  name= "NIN">
+</div>
+</div>
+<div class="form-group">
+    <div class="col-sm-10">
+       <input type="text" class="form-control"  name="status">
+          </div>
+       </div>
+
+</td></tr></table>
+<h4 class="special"><u>Bank details</u> </h4>
+<table class="table"><tr><td>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Email" name="email">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Contact" name="contact">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Emergency contact" name ="emergency">
+</div>
+</div>
+</td><td>
+
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Bank name" name="bank">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Branch" name="branch">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Account number" name="account">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="NSSF number" name="nssf">
+</div>
+</div>
+</td></tr></table>
+<h4 class="special"><u>location</u></h4>
+<table class="table"><tr><td>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Home address" name="home">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="county" name="county">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Sub-county" name="sub">
+</div>
+</div>
+</td><td>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="village" name = "village">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="District" name="district">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="number of kids" name="kids">
+</div>
+</div>
+</td></tr></table>
+<h4 class="special"><u>INFO</u></h4>
+<table class="table"><tr><td>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Next of kin" name="kin">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Contact" name="hiscontact">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Residence" name = "res">
+</div>
+</div>
+</td><td>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Hire date" name="hire">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="start date" name="start">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-10">
+<input type="text" class="form-control" id="lastname" placeholder="Monthly pay" name = "month">
+</div>
+</div>
+</td></tr></table>
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-10">
+<button type="submit" class="btn btn-info btn-block" id ="editor">Add Guard</button>
+</div>
+</div>
+
+</form>
+<div id="err"></div>
+<div id="loader">
+<img src="../assets/images/loader.gif">
+</div>
 </section>
 </div>
 
