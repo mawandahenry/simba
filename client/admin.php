@@ -232,8 +232,8 @@
    <h3 style="text-align:center;">Edit Security Guard</h3></br>
        <section>
 	   <div class="search-box">
-        <input type="text" autocomplete="off" class="form-control col-md-11" placeholder="Search country..." />
-        <div class="result"></div>
+        <input type="text" autocomplete="off" name ="search" id ="search"class="form-control col-md-11" placeholder="Search Guard...." />
+        <div id="result"></div>
     </div>
   
 </div>
@@ -418,10 +418,7 @@
 	   </section>
 		</div
 			</footer>
-
-		<!-- Scripts -->
 			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/searchjs"></script>
 			<script src="../assets/js/queries.js"></script>
 			<script src="../assets/js/browser.min.js"></script>
 			<script src="../assets/js/breakpoints.min.js"></script>

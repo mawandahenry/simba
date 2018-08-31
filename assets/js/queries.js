@@ -30,5 +30,11 @@ $(function(){
             $(".div_1").hide("slow");
         });
     });
+    $("#search").keyup(function(){
+        var one = $(this).val();
+        alert(one);
+       
+    });
+
 
 });
