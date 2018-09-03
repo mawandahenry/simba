@@ -2719,11 +2719,11 @@ width: 900px;
   border: 1px solid #CCCCCC;
   font-size: 14px;
 }
-.result{
-  position: absolute;        
+#result{       
   z-index: 999;
   top: 100%;
-  left: 0;
+  left: 9%;
+  display:none;
 }
 .search-box input[type="text"], .result{
   width: 100%;
@@ -2739,4 +2739,12 @@ width: 900px;
 }
 .result p:hover{
   background: #f2f2f2;
+}
+.xx{
+  margin-left: 340px;
+  
+}
+.op:hover{
+  background-color: lightgrey;
+  cursor: default;
 }
