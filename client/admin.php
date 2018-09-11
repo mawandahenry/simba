@@ -259,43 +259,50 @@
 		   <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id ="form2">
 	   <div class="form-group">
     <div class="col-sm-10">
-   <input type="text" class="form-control"  name ="edit_number">
+   <label>EmployeeNo.</label><input type="text" class="form-control"  name ="edit_number">
    <input type="hidden" name = "id" >
   </div>
  </div>
     <div class="form-group">
         <div class="col-sm-10">
+        <label>firstname</label>
           <input type="text" class="form-control"   name="edit_first">
        </div>
     </div>
  <div class="form-group">
     <div class="col-sm-10">
+    <label>lastname</label>
        <input type="text" class="form-control"   name="edit_last">
           </div>
        </div>
 	   <div class="form-group">
     <div class="col-sm-10">
+    <label>Gender</label>
        <input type="text" class="form-control"   name="edit_Gender">
           </div>
        </div>
  </td><td>
     <div class="form-group">
       <div class="col-sm-10">
+      <label>Age</label>
         <input type="text" class="form-control"   name = "edit_age">
      </div>
    </div>
   <div class="form-group">
     <div class="col-sm-10">
+    <label>Date of Birth</label>
       <input type="text" class="form-control"  name="edit_dob">
         </div>
           </div>
       <div class="form-group">
    <div class="col-sm-10">
+   <label>NIN no.</label>
  <input type="text" class="form-control" id="lastname"  name= "edit_NIN">
       </div>
        </div>
         <div class="form-group">
     <div class="col-sm-10">
+    <label>marital status</label>
        <input type="text" class="form-control"  name="edit_status">
           </div>
        </div>
@@ -305,37 +312,44 @@
         <table class="table"><tr><td>
     <div class="form-group">
   <div class="col-sm-10">
+  <label>email</label>
  <input type="text" class="form-control"  placeholder="Email" name="edit_email">
     </div>
      </div>
       <div class="form-group">
         <div class="col-sm-10">
+        <label>Contact</label>
      <input type="text" class="form-control"  placeholder="Contact" name="edit_contact">
   </div>
    </div>
      <div class="form-group">
        <div class="col-sm-10">
+       <label>Emergency</label>
          <input type="text" class="form-control"  placeholder="Emergency contact" name ="edit_emergency">
         </div>
      </div>
    </td><td>
  <div class="form-group">
    <div class="col-sm-10">
+   <label>Bank name</label>
      <input type="text" class="form-control"  placeholder="Bank name" name="edit_bank">
        </div>
         </div>
    <div class="form-group">
  <div class="col-sm-10">
+ <label>Branch</label>
   <input type="text" class="form-control"  placeholder="Branch" name="edit_branch">
    </div>
     </div>
       <div class="form-group">
         <div class="col-sm-10">
+        <label>Account Number</label>
     <input type="text" class="form-control"  placeholder="Account number" name="edit_account">
   </div>
  </div>
   <div class="form-group">
     <div class="col-sm-10">
+    <label>NSSFno.</label>
       <input type="text" class="form-control"  placeholder="NSSF number" name="edit_nssf">
        </div>
  </div>
@@ -344,32 +358,38 @@
       <table class="table"><tr><td>
    <div class="form-group">
  <div class="col-sm-10">
+ <label>Home address</label>
    <input type="text" class="form-control"  placeholder="Home address" name="edit_home">
      </div>
        </div>
         <div class="form-group">
      <div class="col-sm-10">
+     <label>County</label>
     <input type="text" class="form-control"  placeholder="county" name="edit_county">
   </div>
    </div>
     <div class="form-group">
       <div class="col-sm-10">
+      <label>Sub-County</label>
        <input type="text" class="form-control"  placeholder="Sub-county" name="edit_sub">
      </div>
     </div>
  </td><td>
   <div class="form-group">
     <div class="col-sm-10">
+    <label>Village</label>
       <input type="text" class="form-control"  placeholder="village" name = "edit_village">
        </div>
    </div>
    <div class="form-group">
     <div class="col-sm-10">
+    <label>District</label>
      <input type="text" class="form-control"  placeholder="District" name="edit_district">
       </div>
     </div>
    <div class="form-group">
  <div class="col-sm-10">
+ <label>No of Kids</label>
    <input type="text" class="form-control" placeholder="number of kids" name="edit_kids">
      </div>
       </div>
@@ -379,32 +399,38 @@
    <table class="table"><tr><td>
     <div class="form-group">
   <div class="col-sm-10">
+  <label>Next of Kin</label>
  <input type="text" class="form-control"  placeholder="Next of kin" name="edit_kin">
   </div>
    </div>
     <div class="form-group">
   <div class="col-sm-10">
+  <label>Contact</label>
  <input type="text" class="form-control"  placeholder="Contact" name="edit_hiscontact">
   </div>
    </div>
    <div class="form-group">
  <div class="col-sm-10">
+ <label>Residence</label>
   <input type="text" class="form-control"  placeholder="Residence" name = "edit_res">
    </div>
     </div>
      </td><td>
    <div class="form-group">
   <div class="col-sm-10">
+  <label>Hire date</label>
   <input type="text" class="form-control"  placeholder="Hire date" name="edit_hire">
   </div>
    </div>
     <div class="form-group">
      <div class="col-sm-10">
+     <label>Start date</label>
    <input type="text" class="form-control"  placeholder="start date" name="edit_start">
  </div>
   </div>
    <div class="form-group">
      <div class="col-sm-10">
+     <label>Monthly Pay</label>
   <input type="text" class="form-control"  placeholder="Monthly pay" name = "edit_month">
  </div>
    </div>
