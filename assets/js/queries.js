@@ -1,24 +1,49 @@
 $(function(){
+    $(window).ajaxStart(function(){ //doing ajax start operations
+        $("#loader").show("slow");
+       });
+$("#add_profile").click(function(e){
+    e.preventDefault();
+    $("#myModal").modal('show');
+
+});
      $("#sender").on('click',(function(e) {
         e.preventDefault();
-         var x = $("#form1").serialize();
-           $.ajax({
-            url: "../server/forms.php",
+        var image_name = $("#image").val();
+        if(image_name == ''){
+            alert("please insert guard image");
+            return false;
+        }
+        else{
+            var ext = $("#image").val().split('.').pop().toLowerCase();
+            if(jQuery.inArray(ext,['gif','png','jpg','jpeg'])== -1){
+                alert("invalif image format");
+                $("#image").val('');
+                return false;
+            }
+            else{
+                var x = $("#form1").serialize();
+            $.ajax({
+            url: "../server/forms.php",  //The adding in of users / security guards is implemented from here
            type: "POST",
-         data:{"data1":x},
-       success: function(data){
-     if(data == "success"){
-         $("#err").text("data successfully insserted");// pending operations. not yet fully done
+           data:{"data1":x},
+           success: function(data){
+           if(data == "success"){
+         $('#form1')[0].reset();
+         alert("success fool");// pending operations. not yet fully done
      }
    },
 error: function(e) {
   $("#err").html(e).fadeIn();
     }          
      });
+            }
+        }
+         
        }));
       $("#add_gad").click(function(m){
         m.preventDefault();
-        $(".div_1").show("slow", function(){
+        $(".div_1").show("slow", function(){ //switching between different tabs [edit and add guards ]
             $(".div_2").hide("slow");
         });
     });

@@ -4,6 +4,7 @@ if(isset($_POST["data1"])){
     $a = array();
     parse_str($_POST["data1"],$a);
     $id = $a['number'];
+    $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
     $first = $a['first'];
     $last =$a['last'];
     $gender = $a['gender'];
@@ -33,10 +34,10 @@ if(isset($_POST["data1"])){
     $sql1 = "insert into guards(id,Employee_id,firstname,lastname,gender,
     village,DOB,kids,status,next_of_kin,NIN,bankname,branch,accountnumber,
     email,contact,emergencycontact,NSSFno,startdate,releasedate,hiredate,monthlypay,
-    fullpayyear,earnedsofar,district,residence,county,subcounty,hiscontact)values(NULL,'".$id."','".$first."','".$last."','".$gender."',
+    fullpayyear,earnedsofar,district,residence,county,subcounty,hiscontact,age,profile)values(NULL,'".$id."','".$first."','".$last."','".$gender."',
     '".$village."','".$dob."','".$kids."','".$status."','".$kin."','".$nin."','".$bank."',
     '".$branch."','".$account."','".$email."','".$contact."','".$emergency."','".$nssf."',
-    '".$start."',NULL,'".$hire."','".$month."',NULL,NULL,'".$dist."','".$res."','".$county."','".$sub."','".$con."')";
+    '".$start."',NULL,'".$hire."','".$month."',NULL,NULL,'".$dist."','".$res."','".$county."','".$sub."','".$con."','".$age."','".$image."')";
 
     $result = mysqli_query($link, $sql1);
        if($result){

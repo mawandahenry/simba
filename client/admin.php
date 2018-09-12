@@ -8,6 +8,7 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />	
+    
 	</head>
 	<body class="is-preload">
 
@@ -180,7 +181,12 @@
     <input type="text" class="form-control"  placeholder="District" name="district">
       </div>
         </div>
-         
+        
+        <div class="form-group">
+<div class="col-sm-10">
+   <input type = "file" name = "image" id = "image">
+      </div>
+        </div>
       </td></tr></table>
        <h4 class="special"><u>INFO</u></h4>
     <table class="table"><tr><td>
@@ -457,6 +463,7 @@
 		</div
 			</footer>
 			<script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/bootstrap.min.js"></script>
 			<script src="../assets/js/queries.js"></script>
 			<script src="../assets/js/browser.min.js"></script>
 			<script src="../assets/js/breakpoints.min.js"></script>
