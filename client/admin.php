@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />	
     
 	</head>
-	<body class="is-preload">
+	<body class="is-preload"> 
 
 		<!-- Header -->
 			<header id="header">
@@ -27,7 +27,7 @@
 					<li><a href="#" id = "add_gad">Add Guard</a></li>
 					<li><a href="#" id = "delete_gad">Delete Guard</a></li>
 					<li><a href="#" id = "edit_gad">Edit Guard</a></li>
-					<li><a href="#">Add supervisor</a></li>
+					<li><a href="#" id = "profile">Profiles</a></li>
 					<li><a href="#">Delete Sup</a></li>
 					<li><a href="#">Edit Sup</a></li>
 				</ul>
@@ -182,11 +182,7 @@
       </div>
         </div>
         
-        <div class="form-group">
-<div class="col-sm-10">
-   <input type = "file" name = "image" id = "image">
-      </div>
-        </div>
+       
       </td></tr></table>
        <h4 class="special"><u>INFO</u></h4>
     <table class="table"><tr><td>
@@ -230,7 +226,8 @@
      </div>
    </div>
  </form>
-   <div id="err"></div>
+   <div id="err">
+   </div>
      <div id="loader">
        <img src="../assets/images/loader.gif">
       </div>
@@ -246,6 +243,7 @@
 	<table class="table">
         <thead>
      <tr>
+     <td>Profile</td>
 <td>firstname</td>
   <td>lastname</td>
 	<td>Gender</td>
@@ -260,9 +258,19 @@
  </div>
 	<h4 class="special">Personal Info</h4>
 	<table class="table">
+  <tr><td>
+  <div class="form-group">
+    <div class="col-sm-10">
+     
+      <img id="locked" class = "img-thumbnail" src="../assets/images/edits.png" width="210" height="200" />
+      
+</div>
+</div>
+      </td></tr>
         <tr>
 	      <td>
-		   <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id ="form2">
+       <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id ="form2">
+       
 	   <div class="form-group">
     <div class="col-sm-10">
    <label>EmployeeNo.</label><input type="text" class="form-control"  name ="edit_number">
@@ -447,22 +455,73 @@
    </div>
     </div>
   </form>
- <div id="err"></div>
+ <div id="err2"></div>
   <div id="loader">
     <img src="../assets/images/loader.gif">
      </div>
  </section>
  </div>
 </div>
+<div class = "profile">
+<div class="main">
+<h1 style="text-align: center;">Photo Upload</h1><br/>
+<hr>
+<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
+<div class="form-group">
+ <div class="col-sm-10" style = "margin-left: 10%;">
+  <input type="text" class="form-control"  placeholder = "Employee Number" name = "numbs">
+ </div>
+   </div>
+<div id="image_preview">
+  <img id="previewing" src="../assets/images/place.png" width="180" height="180" />
+</div>
+
+<div id="selectImage">
+<label>Select Your Image</label><br/>
+<input type="file" name="file" id="file" required />
+<input type="submit" value="Upload" class="submit" />
+</div>
+</form>
+</div>
+<h4 id='loading' >loading..</h4>
+<div id="message"></div>
+</div>
+</div>
+ <div class = "delete">
+ <h3 style = "text-align: center;">Deleting Guards</h3>
+ <div class="search-box xx">
+    <input type="text" autocomplete="off" id = "search2" name ="search2" placeholder="Search Security Guard....."/>
+<div id="result2">
+
+	<table class="table">
+        <thead>
+     <tr>
+     <td>Profile</td>
+<td>firstname</td>
+  <td>lastname</td>
+	<td>Gender</td>
+	 <td>village</td>
+   <td>Delete</td>
+  </tr>
+    </thead>
+     <tbody class="res">
+    </tbody>
+  </table>
+
+ </div>
+ </div>
+ </div>
 		<!-- Footer -->
 			<footer id="footer" style="height:100px;">
 		<div class="content">
     <section>
-	<h4>Simba Shield</h4>
+	<h4>Ssimba Shield</h4>
 	   </section>
-		</div
+
+</div>
 			</footer>
-			<script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/photo.js"></script>
       <script src="../assets/js/bootstrap.min.js"></script>
 			<script src="../assets/js/queries.js"></script>
 			<script src="../assets/js/browser.min.js"></script>
