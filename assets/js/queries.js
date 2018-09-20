@@ -3,7 +3,7 @@ $(function(){
         $("#loader").show("slow");
        });
 
-       $(document).ajaxComplete(function(){
+       $(window).ajaxComplete(function(){
         $("#loader").hide();
        });
 
@@ -73,12 +73,14 @@ $(function(){
     
    $("#search1").keyup(function(){
     var name = $(this).val();
+    
     $.ajax({
         type: 'post',
          url: '../server/forms.php',
           data: {"key":name}, //search feature on the edit guard tab. searches and returns values in tabular format
            dataType:'json',
           success: function(data){
+             
         var ht = '';
       $.each(JSON.parse(JSON.stringify(data)),function(index,key){
     ht += '<tr id="datam" mak="'+data[index].id+'" class="op">'+
@@ -134,7 +136,20 @@ $(".resp").on('click','.op',function(){
               $("input[name=edit_month]").val(feed[index].monthlypay);    
               $("input[name=edit_emergency]").val(feed[index].emergencycontact);  
               $("input[name = id]").val(feed[index].id);   
-              $("#locked").attr("src","../server/uploads/"+feed[index].profile);       
+              $("#locked").attr("src","../server/uploads/"+feed[index].profile);  
+              //..............................................................
+              $("input[name=edit_mum]").val(feed[index].mum);   
+              $("input[name=edit_dad]").val(feed[index].dad);   
+              $("input[name=edit_lvillage]").val(feed[index].lvillage);  
+              $("input[name=edit_lccontact]").val(feed[index].lccontact);  
+              $("input[name=edit_lhome]").val(feed[index].lhome);   
+              $("input[name=edit_lcounty]").val(feed[index].lcounty);    
+              $("input[name=edit_ldistrict]").val(feed[index].ldistrict); 
+              $("input[name=edit_llccontact]").val(feed[index].llcontact);
+              $("input[name=edit_4]").val(feed[index].llcname);
+              $("input[name=edit_2]").val(feed[index].lcname);
+              $("input[name=edit_3]").val(feed[index].lccontact);
+                  
            });
      },
   error(){
@@ -190,21 +205,31 @@ $(".resp").on('click','.op',function(){
     });
    });
    $(".res").on("click","#is_delete",function(){
-    var hinks = $(this).attr("the_id");
-    $.ajax({
-        url: "../server/forms.php",
-        type: "post",
-        data:{"deleted":hinks},
-        success: function(back){
-            alert(back);
-            $(this).hide();
-
-        },
-        error: function(){
-            alert("An error has occured suddenly!!!!");
-        }
-    });
+    var hinks = $(this).parent().parent().attr("the_id");
+    var parent = $(this).parent().parent();
+    if(confirm("Do you really want to fire This Guard")){
+        $.ajax({
+            url: "../server/forms.php",
+            type: "post",
+            data:{"deleted":hinks},  //works on firing of the security guards. 
+            success: function(back){
+                alert(back);
+                parent.fadeOut('slow', function() {$(this).remove();});
+    
+            },
+            error: function(){
+                alert("An error has occured suddenly!!!!");
+            }
+        });
+    }
+    
    });
+$("#details").click(function(f){ // loads the details tab which holds the prfile information about security guards
+    f.preventDefault();
+    $(".pas").empty().load("../client/profile.php");
+    
+});
+
 
     
  

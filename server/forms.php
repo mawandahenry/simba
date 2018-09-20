@@ -15,7 +15,7 @@ if(isset($_POST["data1"])){
     $contact = $a['contact'];
     $home = $a['home'];
     $emergency = $a['emergency'];
-    $bank = $a['bank'];
+    $bank = $a['bank'];                    // inserting the guards etails into the database
     $branch = $a['branch'];
     $account = $a['account'];
     $county = $a['county'];
@@ -30,13 +30,28 @@ if(isset($_POST["data1"])){
     $start = $a['start'];
     $month = $a['month'];
     $kids = $a['kids'];
+    $mum = $a['mum'];
+    $dad = $a['dad'];
+    $origin_name = $a['lname'];
+    $origin_con = $a['lccontact'];
+    $loc_name = $a['llcname'];
+    $loc_con = $a['llccontact'];
+    $loc_home = $a['lhome'];
+    $loc_district = $a['ldistrict'];
+    $loc_vil = $a['lvillage'];
+    $loc_county = $a['lcounty'];
+
+
+
     $sql1 = "insert into guards(id,Employee_id,firstname,lastname,gender,
     village,DOB,kids,status,next_of_kin,NIN,bankname,branch,accountnumber,
     email,contact,emergencycontact,NSSFno,startdate,releasedate,hiredate,monthlypay,
-    fullpayyear,earnedsofar,district,residence,county,subcounty,hiscontact,age,profile)values(NULL,'".$id."','".$first."','".$last."','".$gender."',
+    fullpayyear,earnedsofar,district,residence,county,subcounty,hiscontact,age,profile,mum,dad,lcname,
+    lccontact,fired,ldistrict,llcname,llcontact,lcounty,lvillage,lhome)values(NULL,'".$id."','".$first."','".$last."','".$gender."',
     '".$village."','".$dob."','".$kids."','".$status."','".$kin."','".$nin."','".$bank."',
     '".$branch."','".$account."','".$email."','".$contact."','".$emergency."','".$nssf."',
-    '".$start."',NULL,'".$hire."','".$month."',NULL,NULL,'".$dist."','".$res."','".$county."','".$sub."','".$con."','".$age."',NULL)";
+    '".$start."',NULL,'".$hire."','".$month."',NULL,NULL,'".$dist."','".$res."','".$county."','".$sub."','".$con."','".$age."',NULL,'".$mum."','".$dad."',
+    '".$origin_name."','".$origin_con."', 'NO','".$loc_district."','".$loc_name."','".$loc_con."','".$loc_county."','".$loc_vil."','".$loc_home."')";
 
     $result = mysqli_query($link, $sql1);
        if($result){
@@ -47,11 +62,13 @@ if(isset($_POST["data1"])){
     }
     
 }
-elseif(isset($_REQUEST["key"])){
-    $key=$_REQUEST['key'];
+elseif(isset($_POST["key"])){
+    
+    $key=$_POST['key'];
+    
     $array = array();
     
-    $query=mysqli_query($link, "select * from guards where firstname LIKE '%{$key}%'");
+    $query=mysqli_query($link, "SELECT * FROM guards WHERE firstname LIKE '%{$key}%' AND fired = 'NO' ");
     $count =0;
     while($row=mysqli_fetch_assoc($query))
     {
@@ -63,7 +80,7 @@ elseif(isset($_REQUEST["key"])){
 elseif(isset($_REQUEST["edit"])){
     $edit = $_REQUEST["edit"];
     $search_array = array();
-    $query2 = mysqli_query($link, "select * from guards where id = '$edit'");
+    $query2 = mysqli_query($link, "SELECT * FROM guards WHERE id = '$edit' AND fired ='NO'");
     $count2=0;
     while($row2 = mysqli_fetch_assoc($query2)){
         $search_array[$count2++] = $row2;
@@ -102,12 +119,24 @@ elseif(isset($_REQUEST['edited'])){
     $start = $edit['edit_start'];
     $month = $edit['edit_month'];
     $kids = $edit['edit_kids'];
+    $mum = $edit['edit_mum'];
+    $dad = $edit['edit_dad'];
+    $origin_name = $edit['edit_2'];
+    $origin_con = $edit['edit_3'];
+    $loc_name = $edit['edit_4'];
+    $loc_con = $edit['edit_llccontact'];
+    $loc_home = $edit['edit_lhome'];
+    $loc_district = $edit['edit_ldistrict'];
+    $loc_vil = $edit['edit_lvillage'];
+    $loc_county = $edit['edit_lcounty'];
 
     $my_sql = "update guards set Employee_id = '".$number."',firstname= '".$first."',lastname= '".$last."',gender = '".$gender."',age = '".$age."',
     DOB = '".$dob."', NIN = '".$nin."', status = '".$status."',email = '".$email."',contact = '".$contact."',emergencycontact = '".$emergency."',
     bankname = '".$bank."',branch = '".$branch."',accountnumber = '".$account."',county = '".$county."',subcounty = '".$sub."',NSSFno = '".$nssf."',
     village = '".$village."',district = '".$dist."',next_of_kin = '".$kin."', hiscontact = '".$con."',residence = '".$res."',hiredate = '".$hire."',
-    startdate = '".$start."',monthlypay = '".$month."',kids = '".$kids."' where id = '".$this_id."'";
+    startdate = '".$start."',monthlypay = '".$month."',kids = '".$kids."',mum = '".$mum."',dad = '".$dad."',
+    lcname = '".$origin_name."', lccontact = '".$origin_con."', ldistrict = '".$loc_district."', llcname = '".$loc_name."',llcontact = '".$loc_con."',
+    lcounty = '".$loc_county."', lvillage = '".$loc_vil."', lhome = '".$loc_home."' where id = '".$this_id."'";
     $exec = mysqli_query($link, $my_sql);
     if($exec){
         echo "success";
@@ -161,10 +190,9 @@ echo "<span id='invalid'>***Invalid file Size or Type***<span>";
 }
 }
 elseif(isset($_REQUEST["key2"])){
-    $key2=$_REQUEST['key2'];
+    $key2=$_REQUEST['key2'];  //searches for a guard to be fired
     $array2 = array();
-    
-    $query=mysqli_query($link, "select * from guards where firstname LIKE '%{$key2}%'");
+    $query=mysqli_query($link, "SELECT * FROM guards WHERE firstname LIKE '%{$key2}%' AND fired ='NO' )");
     $count =0;
     while($row=mysqli_fetch_assoc($query))
     {
@@ -173,9 +201,9 @@ elseif(isset($_REQUEST["key2"])){
     echo json_encode($array2);
     mysqli_close($link);
 }
-elseif(isset($_REQUEST["deleted"])){
+elseif(isset($_REQUEST["deleted"])){ //updates the fire thing when a guard is fired
     $edit2 = $_REQUEST["deleted"];
-    $query_2 = mysqli_query($link, "DELETE from guards where id = '$edit2'");
+    $query_2 = mysqli_query($link, "update guards set fired = 'YES' where id = '$edit2'");
     if($query_2){
         echo "success";
     }else{
@@ -183,6 +211,34 @@ elseif(isset($_REQUEST["deleted"])){
     }
     
 
+}
+elseif(isset($_POST["details"])){//..............editing neede here.....
+    $key3=$_POST["details"];
+    echo $key3;
+    exit();
+     //returns details searched in the details search form
+    $array4 = array();
+    $query=mysqli_query($link, "SELECT * FROM guards WHERE firstname LIKE  '%{$key}%' AND fired = 'NO'");
+    $count =0;
+    while($row=mysqli_fetch_assoc($query))
+    {
+        $array4[$count++] = $row;
+    }
+    echo json_encode($array4);
+    mysqli_close($link);
+}
+elseif(isset($_REQUEST["det"])){
+    $key4=$_REQUEST["det"];
+    //$req = mysqli_real_escape_string($key4); // returns the guards details when he/she is clicked
+    $array5 = array();
+    $query=mysqli_query($link, "SELECT * FROM guards WHERE id = '".$key4."'");
+    $count =0;
+    while($row=mysqli_fetch_assoc($query))
+    {
+        $array5[$count++] = $row;
+    }
+    echo json_encode($array5);
+    mysqli_close($link);
 }
 else{
     echo "operation unsuccessful";

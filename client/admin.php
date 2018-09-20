@@ -1,7 +1,7 @@
 <!doctype html>
  <html>
 	<head>
-		<title>SIMBA SHIELD</title>
+		<title>SIIMBA SHIELD</title>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,8 @@
 					<li><a href="#" id = "add_gad">Add Guard</a></li>
 					<li><a href="#" id = "delete_gad">Delete Guard</a></li>
 					<li><a href="#" id = "edit_gad">Edit Guard</a></li>
-					<li><a href="#" id = "profile">Profiles</a></li>
+					<li><a href="#" id = "profile">Profile_pic</a></li>
+          <li><a href="#" id = "details">Details</a></li>
 					<li><a href="#">Delete Sup</a></li>
 					<li><a href="#">Edit Sup</a></li>
 				</ul>
@@ -36,11 +37,12 @@
 
 
 <div id="heading" >
-<h1>SIMBA SHIELED</h1>
+<h1>SIIMBA SHIELD</h1>
 <img src = "../assets/images/samban.png" width="220" height = "200" style="float:right;">
 </div></br>
 <div class="div_1">
    <h3 style="text-align:center;">Add Security Guard</h3></br>
+   <section class="pas">
        <section>
 <h4 class="special">Personal Info</h4>
 	<table class="table">
@@ -124,6 +126,21 @@
     </div>
 	</td>
 </tr>
+<tr>
+	<td>
+	<div class="form-group">
+        <div class="col-sm-10">
+     <input type="text" class="form-control" id="lastname" placeholder="father's name" name ="dad">
+   </div>
+</div>
+	</td><td>
+	<div class="form-group">
+      <div class="col-sm-10">
+   <input type="text" class="form-control"  placeholder="mother's name" name="mum">
+</div>
+    </div>
+	</td>
+</tr>
 	</table>
         <h4 class="special"><u>Bank details</u> </h4>
      <table class="table"><tr><td>
@@ -153,7 +170,7 @@
      </div>
   </div>
 </td></tr></table>
-     <h4 class="special"><u>location</u></h4>
+     <h4 class="special"><u>Origin Info</u></h4>
          <table class="table"><tr><td>
      <div class="form-group">
    <div class="col-sm-10">
@@ -167,7 +184,7 @@
     </div>
      <div class="form-group">
        <div class="col-sm-10">
-    <input type="text" class="form-control"  placeholder="Sub-county" name="sub">
+    <input type="text" class="form-control"  placeholder="LC1 contact" name="lccontact">
    </div>
 </div>
     </td><td>
@@ -178,13 +195,50 @@
     </div>
   <div class="form-group">
 <div class="col-sm-10">
-    <input type="text" class="form-control"  placeholder="District" name="district">
+    <input type="text" class="form-control"  placeholder="LC1 name" name="lcname">
       </div>
         </div>
-        
-       
+        <div class="form-group">
+<div class="col-sm-10">
+    <input type="text" class="form-control"  placeholder="District" name="district">
+      </div>
+        </div>     
       </td></tr></table>
-       <h4 class="special"><u>INFO</u></h4>
+      <h4 class="special"><u>Location Info</u></h4>
+         <table class="table"><tr><td>
+     <div class="form-group">
+   <div class="col-sm-10">
+<input type="text" class="form-control"  placeholder="Home address" name="lhome">
+     </div>
+      </div>
+        <div class="form-group">
+     <div class="col-sm-10">
+   <input type="text" class="form-control"  placeholder="county" name="lcounty">
+</div>
+    </div>
+     <div class="form-group">
+       <div class="col-sm-10">
+    <input type="text" class="form-control"  placeholder="LC1 contact" name="llccontact">
+   </div>
+</div>
+    </td><td>
+     <div class="form-group">
+       <div class="col-sm-10">
+        <input type="text" class="form-control"  placeholder="village" name = "lvillage">
+      </div>
+    </div>
+  <div class="form-group">
+<div class="col-sm-10">
+    <input type="text" class="form-control"  placeholder="LC1 name" name="llcname">
+      </div>
+        </div>
+        <div class="form-group">
+<div class="col-sm-10">
+    <input type="text" class="form-control"  placeholder="District" name="ldistrict">
+      </div>
+        </div>     
+      </td></tr></table>
+       <h4 class="special"><u>Next of kin</u></h4>
     <table class="table"><tr><td>
   <div class="form-group">
 <div class="col-sm-10">
@@ -195,23 +249,28 @@
      <div class="col-sm-10">
     <input type="text" class="form-control"  placeholder="Contact" name="hiscontact">
   </div>
-</div>
+</div></td><td>
    <div class="form-group">
       <div class="col-sm-10">
         <input type="text" class="form-control"  placeholder="Residence" name = "res">
       </div>
     </div>
-</td><td>
+   
+</td></tr>
+
+<tr><td>
+
      <div class="form-group">
+
         <div class="col-sm-10">
         <input type="text" class="form-control"  placeholder="Hire date" name="hire">
      </div>
-   </div>
+   </div></td><td>
 <div class="form-group">
    <div class="col-sm-10">
      <input type="text" class="form-control"  placeholder="start date" name="start">
        </div>
-    </div>
+    </div></td></tr><tr><td>
   <div class="form-group">
    <div class="col-sm-10">
      <input type="text" class="form-control"  placeholder="Monthly pay" name = "month">
@@ -237,8 +296,11 @@
      <div class="div_2">
        <h3 style="text-align:center;">Edit Security Guard</h3></br>
          <section>
-	   <div class="search-box xx">
-    <input type="text" autocomplete="off" id = "search1" name ="search" placeholder="Search Security Guard....." id ="ser" />
+         <form class="form-inline md-form form-sm">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <input class="form-control form-control-sm ml-3 w-75" autocomplete="off" name ="search" id = "search1" type="text" placeholder="Search guard...." aria-label="Search">
+</form>
+         
 <div id="result">
 	<table class="table">
         <thead>
@@ -320,6 +382,21 @@
        <input type="text" class="form-control"  name="edit_status">
           </div>
        </div>
+   </td>
+   <td>
+    <div class="form-group">
+      <div class="col-sm-10">
+      <label>Father's name</label>
+        <input type="text" class="form-control"   name = "edit_dad">
+     </div>
+   </div>
+  <div class="form-group">
+    <div class="col-sm-10">
+    <label>mother's name</label>
+      <input type="text" class="form-control"  name="edit_mum">
+        </div>
+          </div>
+     
    </td></tr>
      </table>
       <h4 class="special"><u>Bank details</u> </h4>
@@ -368,7 +445,7 @@
        </div>
  </div>
   </td></tr></table>
-    <h4 class="special"><u>location</u></h4>
+    <h4 class="special"><u>Origin</u></h4>
       <table class="table"><tr><td>
    <div class="form-group">
  <div class="col-sm-10">
@@ -408,7 +485,62 @@
      </div>
       </div>
    </td></tr>
+   <tr>
+   <td><div class="form-group">
+ <div class="col-sm-10">
+ <label>LC1 name</label>
+   <input type="text" class="form-control" placeholder="lc1 name" name="edit_2">
+     </div>
+      </div></td><td>
+      <div class="form-group">
+ <div class="col-sm-10">
+ <label>LC1 contact</label>
+   <input type="text" class="form-control" placeholder="lc1 contact" name="edit_3">
+     </div>
+      </div>
+      </td>
+   </tr>
  </table>
+ <h4 class="special"><u>Location Info</u></h4>
+         <table class="table"><tr><td>
+     <div class="form-group">
+   <div class="col-sm-10">
+   <label>Home address</label>
+<input type="text" class="form-control"  placeholder="Home address" name="edit_lhome">
+     </div>
+      </div>
+        <div class="form-group">
+     <div class="col-sm-10">
+     <label>county</label>
+   <input type="text" class="form-control"  placeholder="county" name="edit_lcounty">
+</div>
+    </div>
+     <div class="form-group">
+       <div class="col-sm-10">
+       <label>LC1 contact</label>
+    <input type="text" class="form-control"  placeholder="LC1 contact" name="edit_llccontact">
+   </div>
+</div>
+    </td><td>
+     <div class="form-group">
+       <div class="col-sm-10">
+       <label>village</label>
+        <input type="text" class="form-control"  placeholder="village" name = "edit_lvillage">
+      </div>
+    </div>
+  <div class="form-group">
+<div class="col-sm-10">
+<label>LC1 name</label>
+    <input type="text" class="form-control"  placeholder="LC1 name" name="edit_4">
+      </div>
+        </div>
+        <div class="form-group">
+<div class="col-sm-10">
+<label>LC1 district</label>
+    <input type="text" class="form-control"  placeholder="District" name="edit_ldistrict">
+      </div>
+        </div>     
+      </td></tr></table>
   <h4 class="special"><u>INFO</u></h4>
    <table class="table"><tr><td>
     <div class="form-group">
@@ -511,6 +643,7 @@
  </div>
  </div>
  </div>
+ </section>
 		<!-- Footer -->
 			<footer id="footer" style="height:100px;">
 		<div class="content">

@@ -2725,6 +2725,24 @@ width: 900px;
   left: 9%;
   display:none;
 }
+#resul{       
+  z-index: 999;
+  top: 100%;
+  left: 9%;
+  display:none;
+  height: 390px;
+  overflow-y: scroll;
+}
+.ti{
+  background:lightslategrey;
+}
+.cl{
+  border-radius:10px;
+  border:1px solid lightgrey;
+}
+#more{
+  display: none;
+}
 .search-box input[type="text"], .result{
   width: 100%;
   box-sizing: border-box;
@@ -2745,6 +2763,10 @@ width: 900px;
   
 }
 .op:hover{
+  background-color: lightgrey;
+  cursor: default;
+}
+#xtreme:hover{
   background-color: lightgrey;
   cursor: default;
 }
