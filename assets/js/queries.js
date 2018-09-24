@@ -1,10 +1,14 @@
 $(function(){
     $(window).ajaxStart(function(){ //doing ajax start operations. executes  when an ajax call is fired
-        $("#loader").show("slow");
+        $("#loader").show("slow",function(){
+          $("#loader2").show();
+        });
        });
 
        $(window).ajaxComplete(function(){
-        $("#loader").hide();
+        $("#loader").hide(1000, function(){
+          $("#loader2").hide();
+        });
        });
 
      $("#sender").on('click',function(e) {
@@ -32,44 +36,57 @@ $(function(){
     });
     $("#add_gad").click(function(m){
         m.preventDefault();
-        $(".div_1").show("slow", function(){ //switching between different tabs [edit and add guards ]
+        $(".pas").show();
+        $(".loy").hide(1000, function(){
+          $(".div_1").show("slow", function(){ //switching between different tabs [edit and add guards ]
             $(".div_2").hide("slow", function(){//add guard tab enabler
                 $(".profile").hide("slow", function(){
                     $(".delete").hide("slow");
                 });
             });
         });
+        });
+        
     });
     $("#edit_gad").click(function(y){
         y.preventDefault();
-        $(".div_2").show("slow", function(){
+        $(".pas").show();
+        $(".loy").hide(1000, function(){
+          $(".div_2").show("slow", function(){
             $(".div_1").hide("slow", function(){ //switching between different tabs [edit and add guards ]
                 $(".profile").hide("slow",function(){
                     $(".delete").hide("slow");  
                 });  //edit guard tab enabler
             });
         });
+        });
     });
     $("#profile").click(function(m){
         m.preventDefault();
-        $(".profile").show("slow", function(){  //switching between different tabs [edit and add guards ]
-            $(".div_2").hide("slow", function(){ //profile picture tab enabler
+         $(".pas").show();
+          $(".loy").hide(1000, function(){
+            $(".profile").show("slow", function(){  //switching between different tabs [edit and add guards ]
+             $(".div_2").hide("slow", function(){ //profile picture tab enabler
                 $(".div_1").hide("slow",function(){
                     $(".delete").hide("slow");
                 });
             });
+           });
         });
     });
     $("#delete_gad").click(function(u){
         u.preventDefault();
-        $(".delete").fadeIn("slow", function(){  //switching between different tabs [edit and add guards ]
+         $(".pas").show();
+          $(".loy").hide(1000, function(){
+            $(".delete").fadeIn("slow", function(){  //switching between different tabs [edit and add guards ]
             $(".div_2").hide("slow", function(){ //profile picture tab enabler
                 $(".div_1").hide("slow",function(){
                     $(".profile").hide("slow");
                 });
             });
+          });
         });
-    });
+      });
     
    $("#search1").keyup(function(){
     var name = $(this).val();
@@ -187,16 +204,19 @@ $(".resp").on('click','.op',function(){
         data: {"key2":name2}, //search feature on the delete guard tab. searches and returns values in tabular format
         dataType:'json',
         success: function(datam){
+           var counter = 0;
             var ht = '';
             $.each(JSON.parse(JSON.stringify(datam)),function(index,key){//creates a table structure for outputing the returned information
+              counter ++;
                 ht += '<tr id="datam" the_id="'+datam[index].id+'" >'+
-                '<td><img src = "../server/uploads/'+datam[index].profile+'" height = "70" width="80"></td><td>'+datam[index].firstname+'</td><td>'+datam[index].lastname+'</td><td>'+datam[index].gender+'</td><td>'+datam[index].village+'</td><td><button class="btn btn-danger" id="is_delete">Delete</button></td>'+  
+                '<td><img src = "../server/uploads/'+datam[index].profile+'" height = "70" width="80"></td><td>'+datam[index].firstname+'</td><td>'+datam[index].lastname+'</td><td>'+datam[index].gender+'</td><td>'+datam[index].village+'</td><td><button class="btn btn-danger" id="is_delete">Fire!</button></td>'+  
                 '</tr>';                   
            });
            $("#result2").show();
            $(".res").html(ht);  
            if($("#search1").val() == ""){
             $("#result").hide(); 
+           $("#counter").html("<b>"+counter+"</b> <i>Guards in Total</i>");
         }
         },
         error: function(){
@@ -226,7 +246,9 @@ $(".resp").on('click','.op',function(){
    });
 $("#details").click(function(f){ // loads the details tab which holds the prfile information about security guards
     f.preventDefault();
-    $(".pas").empty().load("../client/profile.php");
+    $(".pas").hide(1000, function(){
+      $(".loy").show().load("../client/profile.php");
+    });
     
 });
 

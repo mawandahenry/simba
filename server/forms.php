@@ -47,11 +47,11 @@ if(isset($_POST["data1"])){
     village,DOB,kids,status,next_of_kin,NIN,bankname,branch,accountnumber,
     email,contact,emergencycontact,NSSFno,startdate,releasedate,hiredate,monthlypay,
     fullpayyear,earnedsofar,district,residence,county,subcounty,hiscontact,age,profile,mum,dad,lcname,
-    lccontact,fired,ldistrict,llcname,llcontact,lcounty,lvillage,lhome)values(NULL,'".$id."','".$first."','".$last."','".$gender."',
+    lccontact,fired,ldistrict,llcname,llcontact,lcounty,lvillage,lhome,leav,reason)values(NULL,'".$id."','".$first."','".$last."','".$gender."',
     '".$village."','".$dob."','".$kids."','".$status."','".$kin."','".$nin."','".$bank."',
     '".$branch."','".$account."','".$email."','".$contact."','".$emergency."','".$nssf."',
     '".$start."',NULL,'".$hire."','".$month."',NULL,NULL,'".$dist."','".$res."','".$county."','".$sub."','".$con."','".$age."',NULL,'".$mum."','".$dad."',
-    '".$origin_name."','".$origin_con."', 'NO','".$loc_district."','".$loc_name."','".$loc_con."','".$loc_county."','".$loc_vil."','".$loc_home."')";
+    '".$origin_name."','".$origin_con."', 'NO','".$loc_district."','".$loc_name."','".$loc_con."','".$loc_county."','".$loc_vil."','".$loc_home."','NO','NONE')";
 
     $result = mysqli_query($link, $sql1);
        if($result){
@@ -149,11 +149,11 @@ elseif(isset($_REQUEST['edited'])){
 else if(isset($_FILES["file"]["type"]))
 {
 $emp_id = $_POST['numbs'];
-$validextensions = array("jpeg", "jpg", "png");
+$validextensions = array("jpeg", "jpg", "png","JPG");
 $temporary = explode(".", $_FILES["file"]["name"]);
 $file_extension = end($temporary);
 if ((($_FILES["file"]["type"] == "image/png") || ($_FILES["file"]["type"] == "image/jpg") || ($_FILES["file"]["type"] == "image/jpeg")
-) && ($_FILES["file"]["size"] < 5000000)//Approx. 100kb files can be uploaded.
+) && ($_FILES["file"]["size"] < 5000000)//Approx. 5mb files can be uploaded.
 && in_array($file_extension, $validextensions)) {
 if ($_FILES["file"]["error"] > 0)
 {
@@ -189,10 +189,10 @@ else
 echo "<span id='invalid'>***Invalid file Size or Type***<span>";
 }
 }
-elseif(isset($_REQUEST["key2"])){
-    $key2=$_REQUEST['key2'];  //searches for a guard to be fired
+elseif(isset($_POST["key2"])){
+    $key2=$_POST['key2'];  //searches for a guard to be fired
     $array2 = array();
-    $query=mysqli_query($link, "SELECT * FROM guards WHERE firstname LIKE '%{$key2}%' AND fired ='NO' )");
+    $query=mysqli_query($link, "SELECT * FROM guards WHERE firstname LIKE '%{$key2}%' AND fired ='NO'");
     $count =0;
     while($row=mysqli_fetch_assoc($query))
     {
@@ -212,13 +212,12 @@ elseif(isset($_REQUEST["deleted"])){ //updates the fire thing when a guard is fi
     
 
 }
-elseif(isset($_POST["details"])){//..............editing neede here.....
-    $key3=$_POST["details"];
-    echo $key3;
-    exit();
+elseif(isset($_POST["dey"])){//..............editing neede here.....
+    $key3=$_POST["dey"];
+    
      //returns details searched in the details search form
     $array4 = array();
-    $query=mysqli_query($link, "SELECT * FROM guards WHERE firstname LIKE  '%{$key}%' AND fired = 'NO'");
+    $query=mysqli_query($link, "SELECT * FROM guards WHERE firstname LIKE  '%{$key3}%' AND fired = 'NO'");
     $count =0;
     while($row=mysqli_fetch_assoc($query))
     {
@@ -238,6 +237,138 @@ elseif(isset($_REQUEST["det"])){
         $array5[$count++] = $row;
     }
     echo json_encode($array5);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yello"])){
+
+    $query8=mysqli_query($link, "select count(id) as tot from guards");
+    // $query9=mysqli_query($link, "select count(gender) as males from guards where gender = 'Male'");
+    // $query10=mysqli_query($link, "select count(gender) as females from guards where gender = 'Female'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    // $query12=mysqli_query($link, "select count(id) as avas from guards where fired = 'NO'");
+    $county = 0; 
+    $nams = array();
+    while ($row = mysqli_fetch_assoc($query8)) {
+        $nams[$county++] = $row;
+    }
+    echo json_encode($nams);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yello2"])){
+    $query9=mysqli_query($link, "select count(gender) as males from guards where gender = 'Male'");
+    // $query10=mysqli_query($link, "select count(gender) as females from guards where gender = 'Female'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    // $query12=mysqli_query($link, "select count(id) as avas from guards where fired = 'NO'");
+    $county = 0; 
+    $namx = array();
+    while ($row = mysqli_fetch_assoc($query9)) {
+        $namx[$county++] = $row;
+    }
+    echo json_encode($namx);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yello3"])){
+   
+     $query10=mysqli_query($link, "select count(gender) as females from guards where gender = 'Female'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    // $query12=mysqli_query($link, "select count(id) as avas from guards where fired = 'NO'");
+    $county1 = 0; 
+    $namx2 = array();
+    while ($row = mysqli_fetch_assoc($query10)) {
+        $namx2[$county++] = $row;
+    }
+    echo json_encode($namx2);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yello4"])){
+   
+     $query10=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    // $query12=mysqli_query($link, "select count(id) as avas from guards where fired = 'NO'");
+    $count = 0; 
+    $namx3 = array();
+    while ($row = mysqli_fetch_assoc($query10)) {
+        $namx3[$count++] = $row;
+    }
+    echo json_encode($namx3);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yello5"])){
+   
+     $query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    // $query12=mysqli_query($link, "select count(id) as avas from guards where fired = 'NO'");
+    $cou = 0; 
+    $n = array();
+    while ($row = mysqli_fetch_assoc($query14)) {
+        $n[$cou++] = $row;
+    }
+    echo json_encode($n);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yello6"])){
+   
+     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    $query16=mysqli_query($link, "select count(id) as avai from guards where fired = 'NO' && leav = 'NO'");
+    $coin= 0; 
+    $ny = array();
+    while ($row = mysqli_fetch_assoc($query16)) {
+        $ny[$coin++] = $row;
+    }
+    echo json_encode($ny);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yello7"])){
+   
+     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    $query19=mysqli_query($link, "select * from guards where gender = 'Male' && fired = 'NO'");
+    $cot= 0; 
+    $nyt = array();
+    while ($row = mysqli_fetch_assoc($query19)) {
+        $nyt[$cot++] = $row;
+    }
+    echo json_encode($nyt);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yello8"])){
+   
+     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    $query0=mysqli_query($link, "select * from guards where gender = 'Female' && fired = 'NO'");
+    $c= 0; 
+    $cc = array();
+    while ($row = mysqli_fetch_assoc($query0)) {
+        $cc[$c++] = $row;
+    }
+    echo json_encode($cc);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yello9"])){
+   
+     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    $query02=mysqli_query($link, "select * from guards where fired = 'NO'");
+    $c1= 0; 
+    $cc2 = array();
+    while ($row = mysqli_fetch_assoc($query02)) {
+        $cc2[$c1++] = $row;
+    }
+    echo json_encode($cc2);
+    mysqli_close($link);
+}
+elseif(isset($_POST["burn"])){
+   
+     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    $queryt=mysqli_query($link, "select * from guards where fired = 'YES'");
+    $ct= 0; 
+    $cm = array();
+    while ($row = mysqli_fetch_assoc($queryt)) {
+        $cm[$ct++] = $row;
+    }
+    echo json_encode($cm);
     mysqli_close($link);
 }
 else{

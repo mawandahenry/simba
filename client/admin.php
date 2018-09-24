@@ -10,13 +10,13 @@
 		<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />	
     
 	</head>
-	<body class="is-preload"> 
+	<body class="is-preload" style="background-color: #F0FFFF;"> 
 
 		<!-- Header -->
 			<header id="header">
 				<a class="logo" href="index.html">SIMBA SHIELD</a>
 				<nav>
-					<a href="#menu">Menu</a>
+					<a href="#menu">Siimba Menu</a>
 				</nav>
 			</header>
 
@@ -25,11 +25,11 @@
 			<h2>Admin</h2>
 				<ul class="links">
 					<li><a href="#" id = "add_gad">Add Guard</a></li>
-					<li><a href="#" id = "delete_gad">Delete Guard</a></li>
+					<li><a href="#" id = "delete_gad">Fire! Guard</a></li>
 					<li><a href="#" id = "edit_gad">Edit Guard</a></li>
 					<li><a href="#" id = "profile">Profile_pic</a></li>
           <li><a href="#" id = "details">Details</a></li>
-					<li><a href="#">Delete Sup</a></li>
+					<li><a href="#" id = "leave">Leaves</a></li>
 					<li><a href="#">Edit Sup</a></li>
 				</ul>
 			</nav>
@@ -39,12 +39,17 @@
 <div id="heading" >
 <h1>SIIMBA SHIELD</h1>
 <img src = "../assets/images/samban.png" width="220" height = "200" style="float:right;">
-</div></br>
-<div class="div_1">
+</div>
+<!-- heading -->
+
+</br>
+<div class="loy"></div>
+<div class="pas">
+
+ <div class="div_1">
    <h3 style="text-align:center;">Add Security Guard</h3></br>
-   <section class="pas">
-       <section>
-<h4 class="special">Personal Info</h4>
+
+ <h4 class="special">Personal Info</h4>
 	<table class="table">
         <tr>
 	      <td>
@@ -53,15 +58,15 @@
     <div class="col-sm-10">
    <input type="text" class="form-control" placeholder="Enter Employee number" name ="number">
   </div>
-</div>
+ </div>
     <div class="form-group">
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="lastname" placeholder="Enter First Name" name="first">
+          <input type="text" class="form-control"  placeholder="Enter First Name" name="first">
        </div>
     </div>
-<div class="form-group">
+ <div class="form-group">
     <div class="col-sm-10">
-       <input type="text" class="form-control" id="lastname" placeholder="Enter Last Name" name="last">
+       <input type="text" class="form-control"  placeholder="Enter Last Name" name="last">
           </div>
        </div>
      <div class="form-group col-md-5">
@@ -69,22 +74,22 @@
 <select class="form-control" name = "gender">
      <option>Male</option>
 	   <option>Female</option>
-         </select>
+        
 </div>
 </td><td>
      <div class="form-group">
    <div class="col-sm-10">
-<input type="text" class="form-control" id="lastname" placeholder="Age" name = "age">
+<input type="text" class="form-control"  placeholder="Age" name = "age">
    </div>
      </div>
       <div class="form-group">
    <div class="col-sm-10">
- <input type="text" class="form-control" id="lastname" placeholder="date of birth" name="dob">
+ <input type="text" class="form-control"  placeholder="date of birth" name="dob">
     </div>
       </div>
    <div class="form-group">
 <div class="col-sm-10">
-      <input type="text" class="form-control" id="lastname" placeholder="NIN" name= "NIN">
+      <input type="text" class="form-control"  placeholder="NIN" name= "NIN">
      </div>
    </div>
 <div class="form-group col-md-5">
@@ -99,14 +104,14 @@
 	 <td>
 	 <div class="form-group">
   <div class="col-sm-10">
-  <input type="text" class="form-control" id="lastname" placeholder="Email" name="email">
+  <input type="text" class="form-control"  placeholder="Email" name="email">
     </div>
       </div>	 
 	 </td>
 	 <td>
 	 <div class="form-group">
      <div class="col-sm-10">
-   <input type="text" class="form-control" id="lastname" placeholder="Contact" name="contact">
+   <input type="text" class="form-control"  placeholder="Contact" name="contact">
 </div>
    </div>
 	 </td>
@@ -115,7 +120,7 @@
 	<td>
 	<div class="form-group">
         <div class="col-sm-10">
-     <input type="text" class="form-control" id="lastname" placeholder="Emergency contact" name ="emergency">
+     <input type="text" class="form-control"  placeholder="Emergency contact" name ="emergency">
    </div>
 </div>
 	</td><td>
@@ -130,7 +135,7 @@
 	<td>
 	<div class="form-group">
         <div class="col-sm-10">
-     <input type="text" class="form-control" id="lastname" placeholder="father's name" name ="dad">
+     <input type="text" class="form-control"  placeholder="father's name" name ="dad">
    </div>
 </div>
 	</td><td>
@@ -146,27 +151,26 @@
      <table class="table"><tr><td>
 	 <div class="form-group">
       <div class="col-sm-10">
-    <input type="text" class="form-control" id="lastname" placeholder="Bank name" name="bank">
+    <input type="text" class="form-control"  placeholder="Bank name" name="bank">
 </div>
     </div>
     </td><td>
-      
-      <div class="form-group">
+    <div class="form-group">
         <div class="col-sm-10">
-      <input type="text" class="form-control" id="lastname" placeholder="Branch" name="branch">
+      <input type="text" class="form-control"  placeholder="Branch" name="branch">
     </div>
 </div>
 </td></tr>
 <tr><td>
    <div class="form-group">
      <div class="col-sm-10">
-      <input type="text" class="form-control" id="lastname" placeholder="Account number" name="account">
+      <input type="text" class="form-control"  placeholder="Account number" name="account">
     </div>
 </div>
 </td><td>
    <div class="form-group">
      <div class="col-sm-10">
-      <input type="text" class="form-control" id="lastname" placeholder="NSSF number" name="nssf">
+      <input type="text" class="form-control"  placeholder="NSSF number" name="nssf">
      </div>
   </div>
 </td></tr></table>
@@ -290,9 +294,8 @@
      <div id="loader">
        <img src="../assets/images/loader.gif">
       </div>
-   </section>
-</div>
-<!-- edit div -->
+  </div>
+
      <div class="div_2">
        <h3 style="text-align:center;">Edit Security Guard</h3></br>
          <section>
@@ -313,22 +316,22 @@
 </td>
   </tr>
     </thead>
-     <tbody class="resp">
-    </tbody>
+     <tbody class="resp">  
+       </tbody>
   </table>
 </div>
- </div>
+<hr width="50">
+ 
 	<h4 class="special">Personal Info</h4>
 	<table class="table">
   <tr><td>
   <div class="form-group">
     <div class="col-sm-10">
-     
-      <img id="locked" class = "img-thumbnail" src="../assets/images/edits.png" width="210" height="200" />
-      
-</div>
-</div>
-      </td></tr>
+     <img id="locked" class = "img-thumbnail" src="../assets/images/edits.png" width="210" height="200" />
+      </div>
+    </div>
+  </td>
+</tr>
         <tr>
 	      <td>
        <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id ="form2">
@@ -373,7 +376,7 @@
       <div class="form-group">
    <div class="col-sm-10">
    <label>NIN no.</label>
- <input type="text" class="form-control" id="lastname"  name= "edit_NIN">
+ <input type="text" class="form-control"   name= "edit_NIN">
       </div>
        </div>
         <div class="form-group">
@@ -587,15 +590,15 @@
    </div>
     </div>
   </form>
- <div id="err2"></div>
-  <div id="loader">
+ <div id="err3"></div>
+  <div id="loader2">
     <img src="../assets/images/loader.gif">
      </div>
+ 
  </section>
- </div>
 </div>
 <div class = "profile">
-<div class="main">
+<div class="mainy">
 <h1 style="text-align: center;">Photo Upload</h1><br/>
 <hr>
 <form id="uploadimage" action="" method="post" enctype="multipart/form-data">
@@ -609,48 +612,59 @@
 </div>
 
 <div id="selectImage">
-<label>Select Your Image</label><br/>
+<label id="libel">Select Your Image</label><br/>
 <input type="file" name="file" id="file" required />
 <input type="submit" value="Upload" class="submit" />
 </div>
 </form>
 </div>
-<h4 id='loading' >loading..</h4>
+<div id='loading' >
+  <img src="../assets/images/phonix.gif">
+</div>
 <div id="message"></div>
 </div>
-</div>
+
  <div class = "delete">
- <h3 style = "text-align: center;">Deleting Guards</h3>
- <div class="search-box xx">
-    <input type="text" autocomplete="off" id = "search2" name ="search2" placeholder="Search Security Guard....."/>
+ <h3 style = "text-align: center;">Firing!! Guards</h3>
+
+<div id="searched">
+<form class="form-inline md-form form-sm active-cyan active-cyan-2">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <input class="form-control form-control-sm ml-3 w-75" type="text" autocomplete="off" id = "search2" name ="search2" placeholder="Search Security Guard....." aria-label="Search">
+    <div class="is_hidden">
+       <div class="form-group">
+     <div class="col-sm-10">
+   <input type="text" class="form-control"  placeholder="firedate" name="fire_date">
+ </div>
+  </div>
+  <div class="form-group">
+     <div class="col-sm-10">
+   <textarea class="form-control"  placeholder="reason" name="fire_reason">
+   </textarea>
+ </div>
+  </div>
+    </div>
+</form>
+</div>
+<div id="counter"></div>
 <div id="result2">
-
-	<table class="table">
-        <thead>
-     <tr>
-     <td>Profile</td>
-<td>firstname</td>
+<table class="table">
+<thead>
+  <tr>
+    <td>Profile</td>
+   <td>firstname</td>
   <td>lastname</td>
-	<td>Gender</td>
-	 <td>village</td>
-   <td>Delete</td>
+	 <td>Gender</td>
+	  <td>village</td>
+     <td>Delete</td>
   </tr>
-    </thead>
-     <tbody class="res">
+ </thead>
+<tbody class="res">
     </tbody>
-  </table>
-
+      </table>
+       </div>
+     </div>
  </div>
- </div>
- </div>
- </section>
-		<!-- Footer -->
-			<footer id="footer" style="height:100px;">
-		<div class="content">
-    <section>
-	<h4>Ssimba Shield</h4>
-	   </section>
-
 </div>
 			</footer>
       <script src="../assets/js/jquery.min.js"></script>
