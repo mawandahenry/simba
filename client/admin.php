@@ -628,22 +628,9 @@
  <h3 style = "text-align: center;">Firing!! Guards</h3>
 
 <div id="searched">
-<form class="form-inline md-form form-sm active-cyan active-cyan-2">
+  <form class="form-inline md-form form-sm active-cyan active-cyan-2">
     <i class="fa fa-search" aria-hidden="true"></i>
-    <input class="form-control form-control-sm ml-3 w-75" type="text" autocomplete="off" id = "search2" name ="search2" placeholder="Search Security Guard....." aria-label="Search">
-    <div class="is_hidden">
-       <div class="form-group">
-     <div class="col-sm-10">
-   <input type="text" class="form-control"  placeholder="firedate" name="fire_date">
- </div>
-  </div>
-  <div class="form-group">
-     <div class="col-sm-10">
-   <textarea class="form-control"  placeholder="reason" name="fire_reason">
-   </textarea>
- </div>
-  </div>
-    </div>
+      <input class="form-control form-control-sm ml-3 w-75" type="text" autocomplete="off" id = "search2" name ="search2" placeholder="Search Security Guard....." aria-label="Search">
 </form>
 </div>
 <div id="counter"></div>
@@ -663,6 +650,25 @@
     </tbody>
       </table>
        </div>
+       <hr>
+        <div class="is_hidden">
+  <div class="form-group">
+<div class="col-sm-10">
+  <input type="text" class="form-control"  placeholder="firedate" name="fire_date" id="firedate">
+    </div>
+      </div>
+        <div class="form-group">
+     <div class="col-sm-10">
+   <textarea class="form-control" placeholder="reason" name="fire_reason" rows="10" cols="30" id="reason">
+  </textarea>
+ </div>
+  </div>
+   <div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+ <button type="submit" class="btn btn-danger btn-block" id ="editorx">Confirm</button>
+   </div>
+    </div>
+    </div>
      </div>
  </div>
 </div>

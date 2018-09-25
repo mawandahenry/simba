@@ -8,8 +8,10 @@ $(function(){
   return_counter6();// searching for all guards available
   return_counter7();// searching for all men
   return_counter8(); //searching for all women
-  return_counter9(); // returns all guards in the system
+  return_allgads(); // returns all guards in the system
   fireed();
+  return_onleave();
+  available();
     $("#sea").keyup(function(){
     var detal = $(this).val();
     $.ajax({
@@ -104,7 +106,7 @@ $(function(){
    });
    $("#clos").click(function(di){
      di.preventDefault();
-     $(".has_details").hide(2000, function(){
+     $(".has_details").hide(1000, function(){
         $(".open_up").show();
      });
    });
@@ -275,7 +277,28 @@ $(function(){
        }
      });
    }
-   function return_counter9(){
+   function return_onleave(){
+    var wzr = 2;
+     $.ajax({
+       type: 'post',
+       url: '../server/forms.php',
+       data: {"yellox":wzr},
+       dataType: 'json',
+       success: function(dad){
+        var vatx = '';
+          $.each(JSON.parse(JSON.stringify(dad)),function(index,key){
+           vatx += '<tr><td>'+dad[index].Employee_id+'</td><td>'+dad[index].firstname+'</td><td>'+dad[index].lastname+'</td><td>'+dad[index].age+'</td><td>'+dad[index].email+'</td><td>'+dad[index].contact+'</td><td>'+dad[index].hiredate+'</td><td>'+dad[index].startdate+'</td></tr>';
+          });
+
+          $(".onleav").html(vatx);
+
+       },
+       error: function(){
+        alert("proceedure could not be completed");
+       }
+     });
+   }
+   function return_allgads(){
     var ww3 = 2;
      $.ajax({
        type: 'post',
@@ -296,6 +319,27 @@ $(function(){
        }
      });
    }
+   function available(){
+    var ww4= 2;
+     $.ajax({
+       type: 'post',
+       url: '../server/forms.php',
+       data: {"yel":ww4},
+       dataType: 'json',
+       success: function(dyd){
+        var vatv = '';
+          $.each(JSON.parse(JSON.stringify(dyd)),function(index,key){
+           vatv += '<tr><td>'+dyd[index].Employee_id+'</td><td>'+dyd[index].firstname+'</td><td>'+dyd[index].lastname+'</td><td>'+dyd[index].age+'</td><td>'+dyd[index].email+'</td><td>'+dyd[index].contact+'</td><td>'+dyd[index].hiredate+'</td><td>'+dyd[index].startdate+'</td><td>'+dyd[index].monthlypay+'</td></tr>';
+          });
+
+          $(".vail").html(vatv);
+
+       },
+       error: function(){
+        alert("proceedure could not be completed");
+       }
+     });
+   }
    function fireed(){
     var wwx = 2;
      $.ajax({
@@ -306,7 +350,7 @@ $(function(){
        success: function(x){
         var vat4 = '';
           $.each(JSON.parse(JSON.stringify(x)),function(index,key){
-           vat4 += '<tr><td>'+x[index].Employee_id+'</td><td>'+x[index].firstname+'</td><td>'+x[index].lastname+'</td><td>'+x[index].age+'</td><td>'+x[index].email+'</td><td>'+x[index].contact+'</td><td>'+x[index].hiredate+'</td><td>'+x[index].startdate+'</td></tr>';
+           vat4 += '<tr><td>'+x[index].Employee_id+'</td><td>'+x[index].firstname+'</td><td>'+x[index].lastname+'</td><td>'+x[index].contact+'</td><td>'+x[index].hiredate+'</td><td>'+x[index].startdate+'</td><td>'+x[index].releasedate+'</td><td>'+x[index].reason+'</td><td><button class= "btn btn-primary">rehire</button></td><td><button class="btn btn-danger">terminate</button></td></tr>';
           });
 
           $(".fix").html(vat4);
@@ -323,6 +367,7 @@ $(function(){
           $(".women").hide();
           $(".men").slideDown();
           $(".all_c").hide();
+          $(".reavy").hide();
         });
      });
    });
@@ -330,22 +375,37 @@ $(function(){
      $(".info_div").show(1000, function(){
         $(".div_x").hide(1000, function(){
           $(".women").slideDown();
+          $(".reavy").hide();
         });
      });
    });
    $("#kiz").click(function(){
-     $(".info_div").show(1000, function(){
-        $(".div_x").hide(1000, function(){
-          $(".women").hide(1000, function(){
+     $(".info_div").show(600, function(){
+        $(".div_x").hide(600, function(){
+          $(".women").hide(600, function(){
+            $(".reavy").hide();
+            $(".reavy").hide();
             $(".all_c").show();
           });
         });
      });
    });
+   $("#reav").click(function(){
+     $(".info_div").show(600, function(){
+        $(".div_x").hide(600, function(){
+          $(".women").hide(600, function(){
+            $(".all_c").hide();
+            $(".men").hide();
+            $(".fdio").hide();
+            $(".reavy").show();
+          });
+        });
+     });
+   });
    $("#bbak").click(function(){
-     $(".div_x").show(1000, function(){
-        $(".info_div").hide(1000, function(){
-          $(".open_up").hide(1000, function(){
+     $(".div_x").show(600, function(){
+        $(".info_div").hide(600, function(){
+          $(".open_up").hide(600, function(){
             $(".men").hide();
              $(".summary").show();
           });
@@ -353,13 +413,26 @@ $(function(){
      });
    });
    $(".frd").click(function(){
-     $(".div_x").hide(1000, function(){
-        $(".info_div").show(1000, function(){
-          $(".open_up").hide(1000, function(){
+     $(".div_x").hide(500, function(){
+        $(".info_div").show(500, function(){
+          $(".open_up").hide(500, function(){
             $(".men").hide();
             $(".all_c").hide();
-            $("women").hide();
+            $(".women").hide();
              $(".fdio").show();
+          });
+        });
+     });
+   });
+   $(".kis").click(function(){
+     $(".div_x").hide(500, function(){
+        $(".info_div").show(500, function(){
+          $(".open_up").hide(500, function(){
+            $(".men").hide();
+            $(".all_c").hide();
+            $(".women").hide();
+             $(".reavy").hide();
+             $(".pis").show();
           });
         });
      });
@@ -391,6 +464,24 @@ $(function(){
         });
      });
    });
+  $("#bbak5").click(function(){
+     $(".div_x").show(1000, function(){
+        $(".info_div").hide(1000, function(){
+          $(".open_up").hide(1000, function(){
+             $(".summary").show();
+          });
+        });
+     });
+   }); 
+  $("#bbak7").click(function(){
+     $(".div_x").show(1000, function(){
+        $(".info_div").hide(1000, function(){
+          $(".open_up").hide(1000, function(){
+             $(".summary").show();
+          });
+        });
+     });
+   }); 
 });
 </script>
 
@@ -407,6 +498,18 @@ $(function(){
       
     </table>
     <a href="#" class="btn btn-success col-md-6" id="bbak">Back</a>
+  </div>
+   <div class="pis container">
+    <h3 style="text-align: center;">Guards[Available]</h3>
+    <table class="table"><tr>
+      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>Age</th><th>email</th><th>contact</th><th>Hire date</th><th>start date</th><th>monthly pay</th></tr>
+
+      <tbody class="vail">
+        
+      </tbody>
+      
+    </table>
+    <a href="#" class="btn btn-success col-md-6" id="bbak7">Back</a>
   </div>
   <div class="women container">
     <h3 style="text-align: center;">GENDER[female]</h3>
@@ -435,9 +538,10 @@ $(function(){
   </div>
 
   <div class="fdio container">
+    <h3 style="text-align: center;">Guards[fired]</h3>
 
     <table class="table"><tr>
-      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>Age</th><th>email</th><th>contact</th><th>Hire date</th><th>start date</th></tr>
+      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>contact</th><th>Hire date</th><th>start date</th><th>release date</th><th>reason</th><th>rehire</th><th>terminate</th></tr>
 
       <tbody class="fix">
         
@@ -445,6 +549,18 @@ $(function(){
       
     </table>
     <a href="#" class="btn btn-success col-md-6" id="bbak4">Back</a>
+  </div>
+  <div class="reavy container">
+   <h3 style="text-align: center;">Guards[on leave]</h3>
+    <table class="table"><tr>
+      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>Age</th><th>Email</th><th>Contact</th><th>hire date</th><th>start date</th><th>leave date</th><th>leave type</th><th>return date</th></tr>
+
+      <tbody class="onleav">
+        
+      </tbody>
+      
+    </table>
+    <a href="#" class="btn btn-success col-md-6" id="bbak5">Back</a>
   </div>
 
 
@@ -513,7 +629,7 @@ $(function(){
         </div>
       </td>
     </tr>
-     <tr class="avin">
+     <tr class="avin" id="reav">
       <td>
         <div>
           On Leave
@@ -525,7 +641,7 @@ $(function(){
         </div>
       </td>
     </tr>
-    <tr class="avin"><td>
+    <tr class="avin kis"><td>
     Available
   </td><td><div class="avai">xx</div></td></tr>
   </table>

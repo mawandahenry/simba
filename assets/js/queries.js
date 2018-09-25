@@ -1,4 +1,7 @@
 $(function(){
+
+  var hinks = 0;
+  var parent = '';
     $(window).ajaxStart(function(){ //doing ajax start operations. executes  when an ajax call is fired
         $("#loader").show("slow",function(){
           $("#loader2").show();
@@ -225,16 +228,32 @@ $(".resp").on('click','.op',function(){
     });
    });
    $(".res").on("click","#is_delete",function(){
-    var hinks = $(this).parent().parent().attr("the_id");
-    var parent = $(this).parent().parent();
-    if(confirm("Do you really want to fire This Guard")){
+    hinks = $(this).parent().parent().attr("the_id");
+    parent = $(this).parent().parent();
+    $(".is_hidden").show("slow");
+    
+    
+   });
+   $("#editorx").click(function(cmx){
+      cmx.preventDefault();
+      var fired_date = $("#firedate").val();
+      var reason = $("#reason").val();
+      var transfer = "id="+hinks+"&fired="+fired_date+"&reason="+reason;
+      if(confirm("Do you really want to fire This Guard")){
         $.ajax({
             url: "../server/forms.php",
             type: "post",
-            data:{"deleted":hinks},  //works on firing of the security guards. 
+            data:{"deleted":transfer},  //works on firing of the security guards. 
             success: function(back){
-                alert(back);
-                parent.fadeOut('slow', function() {$(this).remove();});
+                if (back == "success"){
+                  $(".is_hidden").empty().addClass("alert alert-success").html("Guard successfully fired").fadeOut(3000);
+                  parent.fadeOut('slow', function() {$(this).remove();});
+                    $("input[name=fire_date]").val("");
+                    $("input[type=textarea]").val("");
+                }
+                else{
+                  alert("operation not successful");
+                }
     
             },
             error: function(){
@@ -242,18 +261,41 @@ $(".resp").on('click','.op',function(){
             }
         });
     }
-    
+
+
    });
+   // $(".res").on("click","#is_delete",function(){
+   //  var hinks = $(this).parent().parent().attr("the_id");
+   //  var parent = $(this).parent().parent();
+   //  if(confirm("Do you really want to fire This Guard")){
+   //      $.ajax({
+   //          url: "../server/forms.php",
+   //          type: "post",
+   //          data:{"deleted":hinks},  //works on firing of the security guards.   || **********duplicated*******
+   //          success: function(back){
+   //              alert(back);
+   //              parent.fadeOut('slow', function() {$(this).remove();});
+    
+   //          },
+   //          error: function(){
+   //              alert("An error has occured suddenly!!!!");
+   //          }
+   //      });
+   //  }
+    
+   // });
 $("#details").click(function(f){ // loads the details tab which holds the prfile information about security guards
     f.preventDefault();
     $(".pas").hide(1000, function(){
-      $(".loy").show().load("../client/profile.php");
+      $(".loy").show().empty().load("../client/profile.php");
     });
     
 });
-
-
+$("#leave").click(function(fb){ // loads the details tab which holds the prfile information about security guards
+    fb.preventDefault();
+    $(".pas").hide(1000, function(){
+      $(".loy").show().empty().load("../client/leave.php");
+    });
     
- 
-
+});
 });

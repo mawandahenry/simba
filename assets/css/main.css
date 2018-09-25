@@ -2737,6 +2737,13 @@ background-color: white;
   height: 300px;
   overflow-y: scroll;
 }
+#result2{       
+  z-index: 999;
+  display:none;
+  background-color: white;
+  height: 300px;
+  overflow-y: scroll;
+}
 .loy{
   display: none;
 }
@@ -2905,7 +2912,7 @@ background-color: white;
     height: 500px;
     border:1px solid gray;
     border-radius:10px;
-    margin-left:10%;
+    margin-left:20%;
     display:none;
     height:750px;
     overflow-y: scroll;
@@ -2959,9 +2966,19 @@ background-color: white;
   #bbak{
     margin-left: 20%;
   }
-  #bbak2, #bbak3, #bbak4{
+  #bbak2, #bbak3, #bbak4,#bbak5,#bbak7{
     margin-left: 20%;
   }
   .all_c{
     display: none;
   }
+  .is_hidden{
+    margin-left: 15%;
+    display: none;
+  }
+  .reavy{
+    display: none;
+  }
+.pis{
+  display: none;
+}

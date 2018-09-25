@@ -201,9 +201,13 @@ elseif(isset($_POST["key2"])){
     echo json_encode($array2);
     mysqli_close($link);
 }
-elseif(isset($_REQUEST["deleted"])){ //updates the fire thing when a guard is fired
-    $edit2 = $_REQUEST["deleted"];
-    $query_2 = mysqli_query($link, "update guards set fired = 'YES' where id = '$edit2'");
+elseif(isset($_POST["deleted"])){ //updates the fire thing when a guard is fired
+    $niw = array();
+    parse_str($_POST["deleted"], $niw);
+    $id = $niw['id'];
+    $reason = $niw['reason'];
+    $fire = $niw['fired'];
+    $query_2 = mysqli_query($link, "update guards set fired = 'YES', reason = '$reason', releasedate = '$fire' where id = '$id'");
     if($query_2){
         echo "success";
     }else{
@@ -323,7 +327,7 @@ elseif(isset($_POST["yello7"])){
    
      //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
     // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
-    $query19=mysqli_query($link, "select * from guards where gender = 'Male' && fired = 'NO'");
+    $query19=mysqli_query($link, "select * from guards where gender = 'Male'");
     $cot= 0; 
     $nyt = array();
     while ($row = mysqli_fetch_assoc($query19)) {
@@ -336,7 +340,7 @@ elseif(isset($_POST["yello8"])){
    
      //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
     // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
-    $query0=mysqli_query($link, "select * from guards where gender = 'Female' && fired = 'NO'");
+    $query0=mysqli_query($link, "select * from guards where gender = 'Female'");
     $c= 0; 
     $cc = array();
     while ($row = mysqli_fetch_assoc($query0)) {
@@ -349,13 +353,26 @@ elseif(isset($_POST["yello9"])){
    
      //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
     // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
-    $query02=mysqli_query($link, "select * from guards where fired = 'NO'");
+    $query02=mysqli_query($link, "select * from guards");
     $c1= 0; 
     $cc2 = array();
     while ($row = mysqli_fetch_assoc($query02)) {
         $cc2[$c1++] = $row;
     }
     echo json_encode($cc2);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yel"])){
+   
+     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    $ql=mysqli_query($link, "select * from guards where fired = 'NO'");
+    $x= 0; 
+    $cx= array();
+    while ($row = mysqli_fetch_assoc($ql)) {
+        $cx[$x++] = $row;
+    }
+    echo json_encode($cx);
     mysqli_close($link);
 }
 elseif(isset($_POST["burn"])){
@@ -369,6 +386,19 @@ elseif(isset($_POST["burn"])){
         $cm[$ct++] = $row;
     }
     echo json_encode($cm);
+    mysqli_close($link);
+}
+elseif(isset($_POST["yellox"])){
+   
+     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    $q=mysqli_query($link, "select * from guards where fired = 'NO' && leav = 'YES' ");
+    $cty= 0; 
+    $cmx= array();
+    while ($row = mysqli_fetch_assoc($q)) {
+        $cmx[$cty++] = $row;
+    }
+    echo json_encode($cmx);
     mysqli_close($link);
 }
 else{
