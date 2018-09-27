@@ -401,6 +401,57 @@ elseif(isset($_POST["yellox"])){
     echo json_encode($cmx);
     mysqli_close($link);
 }
+elseif(isset($_POST["reh"])){
+   $updates = $_POST['reh'];
+     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    if($qp=mysqli_query($link, "update guards set fired = 'NO' where id = '$updates' ")){
+        echo "Guards Successfully rehired. ";
+    }
+    else{
+        echo "an error has occured";
+    }
+    mysqli_close($link);
+}
+elseif(isset($_POST["terminate"])){
+   $up = $_POST['terminate'];
+     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    if($qpr=mysqli_query($link, "delete  from guards where id = '$up' ")){
+        echo "success";
+    }
+    else{
+        echo "error guard not terminated";
+    }
+    mysqli_close($link);
+}
+elseif(isset($_POST["key_leav"])){//..............editing neede here.....
+    $key3=$_POST["key_leav"];
+    
+     //returns details searched in the details search form
+    $arrayx = array();
+    $qpr=mysqli_query($link, "SELECT * FROM guards WHERE firstname LIKE  '%{$key3}%' AND leav = 'NO'");
+    $coup =0;
+    while($row=mysqli_fetch_assoc($qpr))
+    {
+        $arrayx[$coup++] = $row;
+    }
+    echo json_encode($arrayx);
+    mysqli_close($link);
+}
+elseif(isset($_POST["search_leav"])){
+   $qtr = $_POST['search_leav'];
+     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
+    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
+    $qp=mysqli_query($link, "select * from guards where id = '$qtr'");
+    $p= 0; 
+    $r= array();
+    while ($row = mysqli_fetch_assoc($qp)) {
+        $r[$p++] = $row;
+    }
+    echo json_encode($r);
+    mysqli_close($link);
+}
 else{
     echo "operation unsuccessful";
 }

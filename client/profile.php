@@ -12,6 +12,9 @@ $(function(){
   fireed();
   return_onleave();
   available();
+  var parnt = '';
+  var parnt2 = '';
+  var accum = 0;
     $("#sea").keyup(function(){
     var detal = $(this).val();
     $.ajax({
@@ -348,9 +351,11 @@ $(function(){
        data: {"burn":wwx},
        dataType: 'json',
        success: function(x){
+
         var vat4 = '';
           $.each(JSON.parse(JSON.stringify(x)),function(index,key){
-           vat4 += '<tr><td>'+x[index].Employee_id+'</td><td>'+x[index].firstname+'</td><td>'+x[index].lastname+'</td><td>'+x[index].contact+'</td><td>'+x[index].hiredate+'</td><td>'+x[index].startdate+'</td><td>'+x[index].releasedate+'</td><td>'+x[index].reason+'</td><td><button class= "btn btn-primary">rehire</button></td><td><button class="btn btn-danger">terminate</button></td></tr>';
+            accum +=1;
+           vat4 += '<tr secret = "'+x[index].id+'"><td>'+x[index].Employee_id+'</td><td>'+x[index].firstname+'</td><td>'+x[index].lastname+'</td><td>'+x[index].contact+'</td><td>'+x[index].hiredate+'</td><td>'+x[index].startdate+'</td><td>'+x[index].releasedate+'</td><td>'+x[index].reason+'</td><td><button class= "btn btn-primary re_hire">rehire</button></td><td><button class="btn btn-danger del">terminate</button></td><td><div class= "hid" id ="'+x[index].id+'"><img src="../assets/images/loader2.gif"</div></td></tr>';
           });
 
           $(".fix").html(vat4);
@@ -365,17 +370,24 @@ $(function(){
      $(".info_div").show(1000, function(){
         $(".div_x").hide(1000, function(){
           $(".women").hide();
-          $(".men").slideDown();
+           $(".fdio").hide();
           $(".all_c").hide();
           $(".reavy").hide();
+          $(".pis").hide();
+           $(".men").slideDown();
+
         });
      });
    });
    $("#total_female").click(function(){
      $(".info_div").show(1000, function(){
         $(".div_x").hide(1000, function(){
-          $(".women").slideDown();
           $(".reavy").hide();
+          $(".men").hide();
+            $(".fdio").hide();
+            $(".all_c").hide();
+            $(".pis").hide();
+          $(".women").slideDown();
         });
      });
    });
@@ -384,7 +396,9 @@ $(function(){
         $(".div_x").hide(600, function(){
           $(".women").hide(600, function(){
             $(".reavy").hide();
-            $(".reavy").hide();
+            $(".fdio").hide();
+            $(".men").hide();
+            $(".pis").hide();
             $(".all_c").show();
           });
         });
@@ -397,6 +411,7 @@ $(function(){
             $(".all_c").hide();
             $(".men").hide();
             $(".fdio").hide();
+            $(".pis").hide();
             $(".reavy").show();
           });
         });
@@ -415,10 +430,12 @@ $(function(){
    $(".frd").click(function(){
      $(".div_x").hide(500, function(){
         $(".info_div").show(500, function(){
-          $(".open_up").hide(500, function(){
+          $(".open_up").hide(500, function(){ // activates the fired guards tab
             $(".men").hide();
             $(".all_c").hide();
             $(".women").hide();
+            $(".reavy").hide();
+            $(".pis").hide();
              $(".fdio").show();
           });
         });
@@ -427,11 +444,12 @@ $(function(){
    $(".kis").click(function(){
      $(".div_x").hide(500, function(){
         $(".info_div").show(500, function(){
-          $(".open_up").hide(500, function(){
+          $(".open_up").hide(500, function(){ // activates the availabale guards tab
             $(".men").hide();
             $(".all_c").hide();
             $(".women").hide();
              $(".reavy").hide();
+             $(".all_c").hide();
              $(".pis").show();
           });
         });
@@ -455,15 +473,19 @@ $(function(){
         });
      });
    });
-   $("#bbak4").click(function(){
-     $(".div_x").show(1000, function(){
-        $(".info_div").hide(1000, function(){
-          $(".open_up").hide(1000, function(){
-             $(".summary").show();
-          });
-        });
-     });
-   });
+   $("#bbak4").click(function(f){ // loads the details tab which holds the prfile information about security guards
+    f.preventDefault();
+    $(".pas").hide(1000, function(){
+      $(".loy").show();
+      $("#loading2").show();
+      $(".loy").load("../client/profile.php", function(){
+        $("#loading2").hide();
+      });
+    });
+
+    
+    
+});
   $("#bbak5").click(function(){
      $(".div_x").show(1000, function(){
         $(".info_div").hide(1000, function(){
@@ -482,7 +504,57 @@ $(function(){
         });
      });
    }); 
+$(".fix").on("click", ".re_hire", function(){
+    var ent = $(this).parent().parent().attr("secret");
+    parnt = $(this).parent().parent();
+     $('#'+ent).show();
+    $.ajax({
+        url: '../server/forms.php',
+        type: 'post',
+        data: {'reh':ent},
+
+        success: function(good){
+          alert(good);
+          parnt.fadeOut('slow', function() {$(this).remove();});
+           $('#'+ent).hide();
+        },
+        error: function(){
+          alert("Operation not successful");
+           $('#'+ent).hide();
+        }
+
+    });
+  });
+$(".fix").on("click", ".del", function(){
+    var entrix = $(this).parent().parent().attr("secret");
+    parnt2 = $(this).parent().parent();
+    $('#'+entrix).show();
+       
+    $.ajax({
+        url: '../server/forms.php',
+        type: 'post',
+        data: {'terminate':entrix},
+
+        success: function(feed){
+          if(feed == "success"){
+            alert("Guard successfully deleted");
+            parnt2.fadeOut('slow', function() {$(this).remove();}); 
+           $("#"+entrix).hide();
+          }else{
+              alert("")
+          }
+         
+        },
+        error: function(){
+          alert("Operation not successful");
+          $("#"+entrix).hide();
+        }
+
+    });
+  });
+
 });
+
 </script>
 
 <div class="info_div">
@@ -536,7 +608,18 @@ $(function(){
     </table>
     <a href="#" class="btn btn-success col-md-6" id="bbak3">Back</a>
   </div>
+  <div class="reavy container">
+   <h3 style="text-align: center;">Guards[on leave]</h3>
+    <table class="table"><tr>
+      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>Age</th><th>Email</th><th>Contact</th><th>hire date</th><th>start date</th><th>leave date</th><th>leave type</th><th>return date</th></tr>
 
+      <tbody class="onleav">
+        
+      </tbody>
+      
+    </table>
+    <a href="#" class="btn btn-success col-md-6" id="bbak5">Back</a>
+  </div>
   <div class="fdio container">
     <h3 style="text-align: center;">Guards[fired]</h3>
 
@@ -562,6 +645,7 @@ $(function(){
     </table>
     <a href="#" class="btn btn-success col-md-6" id="bbak5">Back</a>
   </div>
+
 
 
   </div>

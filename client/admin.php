@@ -1,11 +1,10 @@
 <!doctype html>
- <html>
+ <html lang="en">
 	<head>
 		<title>SIIMBA SHIELD</title>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="keywords" content="" />
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />	
     
@@ -43,7 +42,21 @@
 <!-- heading -->
 
 </br>
-<div class="loy"></div>
+<div class="loy">
+ <div id='loading2' >
+  <img src="../assets/images/phonix.gif">
+</div> 
+<div id="floatingBarsG">
+  <div class="blockG" id="rotateG_01"></div>
+  <div class="blockG" id="rotateG_02"></div>
+  <div class="blockG" id="rotateG_03"></div>
+  <div class="blockG" id="rotateG_04"></div>
+  <div class="blockG" id="rotateG_05"></div>
+  <div class="blockG" id="rotateG_06"></div>
+  <div class="blockG" id="rotateG_07"></div>
+  <div class="blockG" id="rotateG_08"></div>
+</div>
+</div>
 <div class="pas">
 
  <div class="div_1">
@@ -281,6 +294,21 @@
        </div>
      </div>
     </td>
+    <tr>
+      <td>
+         <div id="err">
+
+   </div>
+   <div id="errn">
+          
+   </div>
+      </td>
+      <td>
+        <div id="loader">
+       <img src="../assets/images/loader.gif">
+      </div>
+      </td>
+    </tr>
   </tr>
    </table>
      <div class="form-group">
@@ -289,11 +317,8 @@
      </div>
    </div>
  </form>
-   <div id="err">
-   </div>
-     <div id="loader">
-       <img src="../assets/images/loader.gif">
-      </div>
+  
+     
   </div>
 
      <div class="div_2">
@@ -305,6 +330,10 @@
 </form>
          
 <div id="result">
+  <div id="shed">
+    <img src="../assets/images/loader2.gif">
+    <p style="color: green">Loading please wait ......</p>
+  </div>
 	<table class="table">
         <thead>
      <tr>
@@ -583,17 +612,28 @@
   <input type="text" class="form-control"  placeholder="Monthly pay" name = "edit_month">
  </div>
    </div>
-    </td></tr></table>
+    </td></tr>
+
+    <tr>
+      <td>
+        <div id="err3"></div>
+ <div id="err4"></div>
+  
+      </td>
+      <td>
+        <div id="loader2">
+    <img src="../assets/images/loader.gif">
+     </div>
+      </td>
+    </tr></table>
+
      <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
  <button type="submit" class="btn btn-info btn-block" id ="editor">Edit Guard</button>
    </div>
     </div>
   </form>
- <div id="err3"></div>
-  <div id="loader2">
-    <img src="../assets/images/loader.gif">
-     </div>
+
  
  </section>
 </div>
@@ -634,6 +674,9 @@
 </form>
 </div>
 <div id="counter"></div>
+<div id="sachi">
+  <img src="../assets/images/loader1.gif">
+</div>
 <div id="result2">
 <table class="table">
 <thead>
@@ -669,6 +712,9 @@
    </div>
     </div>
     </div>
+    <div id="sachi2">
+  <img src="../assets/images/loader1.gif">
+</div>
      </div>
  </div>
 </div>

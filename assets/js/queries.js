@@ -5,6 +5,7 @@ $(function(){
     $(window).ajaxStart(function(){ //doing ajax start operations. executes  when an ajax call is fired
         $("#loader").show("slow",function(){
           $("#loader2").show();
+
         });
        });
 
@@ -25,10 +26,10 @@ $(function(){
         success: function(data){
            if(data == "success"){
          $('#form1')[0].reset();
-         $("#err").addClass("successful").text("Guard successfully inserted").hide(4000);// pending operations. not yet fully done
+         $("#err").addClass("alert alert-success").text("Guard successfully inserted").fadeOut(3000);// pending operations. not yet fully done
          
            }else{
-               alert("Data could not be sent because of an error");
+                 $("#errn").addClass("alert alert-danger").text("An Error occured").fadeOut(3000);//
            }
      
    },
@@ -93,7 +94,7 @@ $(function(){
     
    $("#search1").keyup(function(){
     var name = $(this).val();
-    
+     //$("#shed").show();
     $.ajax({
         type: 'post',
          url: '../server/forms.php',
@@ -121,6 +122,7 @@ $("#result").show();
 
 $(".resp").on('click','.op',function(){
     var my_id = $(this).attr("mak");
+     $("#shed").show();
   $.ajax({
      url:'../server/forms.php',
        type:'post',
@@ -171,11 +173,12 @@ $(".resp").on('click','.op',function(){
               $("input[name=edit_3]").val(feed[index].lccontact);
                   
            });
+             $("#shed").hide();
      },
   error(){
          alert("something went wrong");
      }
- });
+ });//......here
  }); 
 
  $("#form2").on('submit',function(x){
@@ -187,8 +190,12 @@ $(".resp").on('click','.op',function(){
          data:{'edited':edit_data},
          success: function(back){
             if(back == "success"){
-            $("#err2").addClass("successful").html("<b>user successfullly updated</b>").hide(5000);
+            $("#err3").addClass("alert alert-success").html("<b>user successfullly updated</b>").fadeOut(3000);
             $('#form2')[0].reset();
+            $("#locked").attr("src","../assets/images/place.png");  
+            }
+            else{
+               $("#err4").addClass("alert alert-warning").html("<b>user could not be updated</b>").fadeOut(3000);
             }
          },
          error:function(){
@@ -201,12 +208,14 @@ $(".resp").on('click','.op',function(){
  });
  $("#search2").keyup(function(){
     var name2 = $(this).val();
+    $("#sachi").show();
     $.ajax({
         type: 'post',
         url: '../server/forms.php',
         data: {"key2":name2}, //search feature on the delete guard tab. searches and returns values in tabular format
         dataType:'json',
         success: function(datam){
+          $("#sachi").hide();
            var counter = 0;
             var ht = '';
             $.each(JSON.parse(JSON.stringify(datam)),function(index,key){//creates a table structure for outputing the returned information
@@ -217,7 +226,7 @@ $(".resp").on('click','.op',function(){
            });
            $("#result2").show();
            $(".res").html(ht);  
-           if($("#search1").val() == ""){
+           if($("#search2").val() == ""){
             $("#result").hide(); 
            $("#counter").html("<b>"+counter+"</b> <i>Guards in Total</i>");
         }
@@ -236,6 +245,7 @@ $(".resp").on('click','.op',function(){
    });
    $("#editorx").click(function(cmx){
       cmx.preventDefault();
+      $("#sachi2").show();
       var fired_date = $("#firedate").val();
       var reason = $("#reason").val();
       var transfer = "id="+hinks+"&fired="+fired_date+"&reason="+reason;
@@ -245,6 +255,7 @@ $(".resp").on('click','.op',function(){
             type: "post",
             data:{"deleted":transfer},  //works on firing of the security guards. 
             success: function(back){
+              $("#sachi2").hide();
                 if (back == "success"){
                   $(".is_hidden").empty().addClass("alert alert-success").html("Guard successfully fired").fadeOut(3000);
                   parent.fadeOut('slow', function() {$(this).remove();});
@@ -284,18 +295,36 @@ $(".resp").on('click','.op',function(){
    //  }
     
    // });
+// $("#details").click(function(f){ // loads the details tab which holds the prfile information about security guards
+//     f.preventDefault();
+//     $(".pas").hide(1000, function(){
+//       $(".loy").show().empty().load("../client/profile.php");
+//     });
+    
+// });
 $("#details").click(function(f){ // loads the details tab which holds the prfile information about security guards
     f.preventDefault();
     $(".pas").hide(1000, function(){
-      $(".loy").show().empty().load("../client/profile.php");
+      $(".loy").show();
+      $("#loading2").show();
+      $(".loy").load("../client/profile.php", function(){
+        $("#loading2").hide();
+      });
     });
+
+    
     
 });
 $("#leave").click(function(fb){ // loads the details tab which holds the prfile information about security guards
     fb.preventDefault();
     $(".pas").hide(1000, function(){
-      $(".loy").show().empty().load("../client/leave.php");
+      $(".loy").show().empty();
+        $("#floatingBarsG").show();
+        $(".loy").load("../client/leave.php", function(){
+        $("#floatingBarsG").hide();
     });
     
 });
+});
+
 });
