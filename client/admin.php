@@ -29,13 +29,15 @@
 					<li><a href="#" id = "profile">Profile_pic</a></li>
           <li><a href="#" id = "details">Details</a></li>
 					<li><a href="#" id = "leave">Leaves</a></li>
-					<li><a href="#">Edit Sup</a></li>
+            <li><a href="#" id = "salary">Guards salaries</a></li>
+					<li><a href="#">Supervisors</a></li>
+          <li><a href="#">Reports</a></li>
 				</ul>
 			</nav>
 
 
 
-<div id="heading" >
+<div id="heading" class="col-md-12 col-sm-12">
 <h1>SIIMBA SHIELD</h1>
 <img src = "../assets/images/samban.png" width="220" height = "200" style="float:right;">
 </div>
@@ -45,17 +47,10 @@
 <div class="loy">
  <div id='loading2' >
   <img src="../assets/images/phonix.gif">
-</div> 
-<div id="floatingBarsG">
-  <div class="blockG" id="rotateG_01"></div>
-  <div class="blockG" id="rotateG_02"></div>
-  <div class="blockG" id="rotateG_03"></div>
-  <div class="blockG" id="rotateG_04"></div>
-  <div class="blockG" id="rotateG_05"></div>
-  <div class="blockG" id="rotateG_06"></div>
-  <div class="blockG" id="rotateG_07"></div>
-  <div class="blockG" id="rotateG_08"></div>
 </div>
+<div id='loadingy' >
+  <img src="../assets/images/loader6.gif">
+</div> 
 </div>
 <div class="pas">
 

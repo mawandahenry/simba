@@ -290,7 +290,7 @@ $(function(){
        success: function(dad){
         var vatx = '';
           $.each(JSON.parse(JSON.stringify(dad)),function(index,key){
-           vatx += '<tr><td>'+dad[index].Employee_id+'</td><td>'+dad[index].firstname+'</td><td>'+dad[index].lastname+'</td><td>'+dad[index].age+'</td><td>'+dad[index].email+'</td><td>'+dad[index].contact+'</td><td>'+dad[index].hiredate+'</td><td>'+dad[index].startdate+'</td></tr>';
+           vatx += '<tr><td>'+dad[index].Employee_id+'</td><td>'+dad[index].firstname+'</td><td>'+dad[index].lastname+'</td><td>'+dad[index].age+'</td><td>'+dad[index].leavetype+'</td><td>'+dad[index].startdate+'</td><td>'+dad[index].returndate+'</td><td>'+dad[index].paid+'</td><td>'+dad[index].amount+'</td><td>'+dad[index].reason+'</td></tr>';
           });
 
           $(".onleav").html(vatx);
@@ -311,7 +311,7 @@ $(function(){
        success: function(das9){
         var vat3 = '';
           $.each(JSON.parse(JSON.stringify(das9)),function(index,key){
-           vat3 += '<tr><td>'+das9[index].Employee_id+'</td><td>'+das9[index].firstname+'</td><td>'+das9[index].lastname+'</td><td>'+das9[index].age+'</td><td>'+das9[index].email+'</td><td>'+das9[index].contact+'</td><td>'+das9[index].hiredate+'</td><td>'+das9[index].startdate+'</td><td>'+das9[index].monthlypay+'</td></tr>';
+           vat3 += '<tr><td><img class = "img-thumbnail" src="../server/uploads/'+das9[index].profile+'" height=50 width=50></td><td>'+das9[index].Employee_id+'</td><td>'+das9[index].firstname+'</td><td>'+das9[index].lastname+'</td><td>'+das9[index].age+'</td><td>'+das9[index].email+'</td><td>'+das9[index].contact+'</td><td>'+das9[index].hiredate+'</td><td>'+das9[index].startdate+'</td><td>'+das9[index].monthlypay+'</td></tr>';
           });
 
           $(".all").html(vat3);
@@ -599,7 +599,7 @@ $(".fix").on("click", ".del", function(){
  <div class="all_c container">
 <h3 style="text-align: center;">TOTAL[male & female]</h3>
     <table class="table"><tr>
-      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>Age</th><th>email</th><th>contact</th><th>Hire date</th><th>start date</th><th>monthly pay</th></tr>
+      <th>Profile</th><th>Employee ID</th><th>firstname</th><th>lastname</th><th>Age</th><th>email</th><th>contact</th><th>Hire date</th><th>start date</th><th>monthly pay</th></tr>
 
       <tbody class="all">
         
@@ -611,7 +611,7 @@ $(".fix").on("click", ".del", function(){
   <div class="reavy container">
    <h3 style="text-align: center;">Guards[on leave]</h3>
     <table class="table"><tr>
-      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>Age</th><th>Email</th><th>Contact</th><th>hire date</th><th>start date</th><th>leave date</th><th>leave type</th><th>return date</th></tr>
+      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>Age</th><th>leave type</th><th>leave date</th><th>return date</th><th>paid</th><th>amount</th><th>Reason</th></tr>
 
       <tbody class="onleav">
         
@@ -624,7 +624,7 @@ $(".fix").on("click", ".del", function(){
     <h3 style="text-align: center;">Guards[fired]</h3>
 
     <table class="table"><tr>
-      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>contact</th><th>Hire date</th><th>start date</th><th>release date</th><th>reason</th><th>rehire</th><th>terminate</th></tr>
+      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>Age</th><th>Leave date</th><th>Leave type</th><th>Return date</th><th>Reason</th><th>Option1</th><th>Option2</th></tr>
 
       <tbody class="fix">
         
@@ -633,21 +633,6 @@ $(".fix").on("click", ".del", function(){
     </table>
     <a href="#" class="btn btn-success col-md-6" id="bbak4">Back</a>
   </div>
-  <div class="reavy container">
-   <h3 style="text-align: center;">Guards[on leave]</h3>
-    <table class="table"><tr>
-      <th>Employee ID</th><th>firstname</th><th>lastname</th><th>Age</th><th>Email</th><th>Contact</th><th>hire date</th><th>start date</th><th>leave date</th><th>leave type</th><th>return date</th></tr>
-
-      <tbody class="onleav">
-        
-      </tbody>
-      
-    </table>
-    <a href="#" class="btn btn-success col-md-6" id="bbak5">Back</a>
-  </div>
-
-
-
   </div>
   <div class="div_x">
 <div class="open_up">

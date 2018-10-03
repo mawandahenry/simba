@@ -392,7 +392,7 @@ elseif(isset($_POST["yellox"])){
    
      //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
     // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
-    $q=mysqli_query($link, "select * from guards where fired = 'NO' && leav = 'YES' ");
+    $q=mysqli_query($link, "select  guards.Employee_id, guards.firstname, guards.lastname,guards.age, leave_table.startdate,leave_table.returndate,leave_table.paid,leave_table.amount,leave_table.leavetype, leave_table.reason from guards inner join leave_table on guards.Employee_id = leave_table.empid");
     $cty= 0; 
     $cmx= array();
     while ($row = mysqli_fetch_assoc($q)) {
@@ -441,8 +441,6 @@ elseif(isset($_POST["key_leav"])){//..............editing neede here.....
 }
 elseif(isset($_POST["search_leav"])){
    $qtr = $_POST['search_leav'];
-     //$query14=mysqli_query($link, "select count(id) as leav from guards where leav = 'YES'");
-    // $query11=mysqli_query($link, "select count(id) as fired from guards where fired = 'YES'");
     $qp=mysqli_query($link, "select * from guards where id = '$qtr'");
     $p= 0; 
     $r= array();
@@ -452,6 +450,30 @@ elseif(isset($_POST["search_leav"])){
     echo json_encode($r);
     mysqli_close($link);
 }
+elseif(isset($_POST["leaves"])){
+   $pas = array();
+    parse_str($_POST["leaves"],$pas);
+    $emp = $pas['leav1'];
+    $first = $pas['leav2'];
+    $last = $pas['leav3'];
+    $leav = $pas['leav6'];
+    $paid = $pas['leav7'];
+    $amount = $pas['leav8'];
+    $start = $pas['leav9'];
+    $return = $pas['leav10'];
+    $reason = $pas['reasons'];
+    $lp = mysqli_query($link, "insert into leave_table(id,empid,startdate,returndate,leavetype,paid,reason,firstname,
+    lastname,amount) values(NULL, '".$emp."','".$start."','".$return."','".$leav."','".$paid."',
+    '".$reason."','".$first."','".$last."','".$amount."')");
+   $rp =  mysqli_query($link, "update guards set leav = 'YES' where Employee_id = '$emp'");
+if($lp && $rp){
+    echo "success";
+}
+else{
+   echo "not success".mysqli_error($link); 
+}
+}
+
 else{
     echo "operation unsuccessful";
 }

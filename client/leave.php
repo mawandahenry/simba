@@ -31,6 +31,7 @@
         }
     });
    });
+
    $(".resx").on("click",".op",function(){
        var leav_v = $(this).attr("leave_id");
        
@@ -45,8 +46,8 @@
               $("input[name=leav1]").val(fil[index].Employee_id).attr("disabled","disabled");  
               $("input[name=leav2]").val(fil[index].firstname).attr("disabled","disabled");  
               $("input[name=leav3]").val(fil[index].lastname).attr("disabled","disabled");     
-              $("input[name=leav4]").val(fil[index].gender).attr("disabled","disabled");   
-              $("input[name = leav5]").val(fil[index].age).attr("disabled","disabled");   
+              $("input[name = leav5]").val(fil[index].age).attr("disabled","disabled"); 
+              $("input[name=leav8]").val("DISABLED").attr("disabled","disabled");  
               $("#eh").attr("src","../server/uploads/"+fil[index].profile);                    
            });
              $(".loading4").hide();
@@ -58,6 +59,50 @@
     
     
    });
+
+ $("#paid").change(function(){
+    var pm = $(this).val();
+   
+    if(pm == "YES"){
+      $("input[name=leav8]").attr("disabled",false).val("Enter Amount please");
+    }
+    else{
+      $("input[name=leav8]").attr("disabled","disabled");
+    }
+ });
+ $("#liv").submit(function(lop){
+     lop.preventDefault();
+       $("input[name=leav1]").attr("disabled",false);  
+        $("input[name=leav2]").attr("disabled",false);  
+       $("input[name=leav3]").attr("disabled",false);     
+      $("input[name = leav5]").attr("disabled",false); 
+    var tix = $(this).serialize();
+   $(".loadingx").show();
+    $.ajax({
+ url:'../server/forms.php',
+   type: 'post',
+     data: {'leaves':tix},
+      success: function(yep){
+        if(yep == "success"){
+           $("#stat").addClass("alert alert-success").text("Leave successfully granted").fadeOut(3000);
+        $(".loadingx").hide();
+         $('#liv')[0].reset();
+         $("#eh").attr("src","../assets/images/place.png");  
+        }else{
+          $("#stat").addClass("alert alert-danger").text("Sorry something went wrong").fadeOut(3000);
+        $(".loadingx").hide();
+        }
+
+ },
+ error: function(){
+   $("#stat").addClass("alert alert-danger").text("Error 404, Server is unreachable").fadeOut(3000);
+   $(".loadingx").hide();
+ }
+
+
+    });
+ })
+
   });
 </script>
 
@@ -72,7 +117,7 @@
                <h4 style="text-align: center;">Main menue</h3>
              </div>
           <div class="card-body" >
-          	<table class="table">
+          	<table class="table-hover">
           		<tr>
           			<td>
           			Award leave	
@@ -134,14 +179,13 @@
     </tbody>
       </table>
        </div>
-<form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" >
+<form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id="liv">
       <div id="is_photo">
   <img  id = "eh" src="../assets/images/place.png" width="200" height="200" class="img-thumbnail">
 </div> 
      <div class="form-group">
     <div class="col-sm-10">
    <label>EmployeeNo.</label><input type="text" class="form-control"  name ="leav1">
-   <input type="hidden" name = "id" >
   </div>
  </div>
     <div class="form-group">
@@ -156,19 +200,7 @@
        <input type="text" class="form-control"   name="leav3">
           </div>
        </div>
-     <div class="form-group">
-    <div class="col-sm-10">
-    <label>Gender</label>
-       <input type="text" class="form-control"   name="leav4">
-          </div>
-       </div>
-    <div class="form-group">
-      <div class="col-sm-10">
-      <label>Age</label>
-        <input type="text" class="form-control"   name = "leav5">
-     </div>
-   </div>
-  <div class="form-group col-md-5">
+       <div class="form-group col-md-5">
   <label for="name">Leave Type</label>
 <select class="form-control" name = "leav6">
      <option>Annual</option>
@@ -177,18 +209,40 @@
      <option>Sick Leave</option>
    </select>
   </div>
+   <div class="form-group col-md-5">
+  <label for="name">Paid</label>
+<select class="form-control" name = "leav7" id="paid">
+     <option>NO</option>
+     <option>YES</option>
+     
+   </select>
+  </div>
+     <div class="form-group">
+    <div class="col-sm-10">
+    <label>Amount</label>
+       <input type="text" class="form-control"   name="leav8">
+          </div>
+       </div>
+  
       <div class="form-group">
    <div class="col-sm-10">
-   <label>Leave date date</label>
- <input type="text" class="form-control"   name= "leav7">
+   <label>StartDate </label>
+ <input type="text" class="form-control"   name= "leav9">
       </div>
        </div>
         <div class="form-group">
     <div class="col-sm-10">
     <label>Return date</label>
-       <input type="text" class="form-control"  name="leav8">
+       <input type="text" class="form-control"  name="leav10">
           </div>
        </div>
+        <div class="form-group">
+           <label style="margin-left: 4%;">Reason</label>
+     <div class="col-sm-10">
+   <textarea class="form-control" placeholder="reason" name="reasons" rows="10" cols="20" id="reasonx">
+  </textarea>
+ </div>
+  </div>
    
    <div class="form-group">
        <div class="col-sm-offset-2 col-sm-10">
@@ -199,7 +253,13 @@
   </div>
 </div>
   </div>
-  <div class="card-footer">Footer</div>
+  <div class="card-footer">
+ <div class="loadingx">
+      <img src="../assets/images/loader5.gif">
+  </div>
+  <div id="stat">
+  </div>
+  </div>
 </div>
 </div>
 </td>

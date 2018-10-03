@@ -318,10 +318,10 @@ $("#details").click(function(f){ // loads the details tab which holds the prfile
 $("#leave").click(function(fb){ // loads the details tab which holds the prfile information about security guards
     fb.preventDefault();
     $(".pas").hide(1000, function(){
-      $(".loy").show().empty();
-        $("#floatingBarsG").show();
+      $(".loy").show();
+        $("#loadingy").show();
         $(".loy").load("../client/leave.php", function(){
-        $("#floatingBarsG").hide();
+        $("loadingy").hide();
     });
     
 });
